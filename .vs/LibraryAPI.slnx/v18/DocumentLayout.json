@@ -3,40 +3,160 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Migrations\\20260721130347_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DataAccess\\Migrations\\20260721130347_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\core\\dataaccess\\entityframework\\efrepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|solutionrelative:core\\dataaccess\\entityframework\\efrepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|solutionrelative:entities\\entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\core\\dataaccess\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|solutionrelative:core\\dataaccess\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC0BA824-A02B-45FF-ABD9-5FF28A853695}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\concrete\\entityframework\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC0BA824-A02B-45FF-ABD9-5FF28A853695}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\concrete\\entityframework\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\webapi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC0BA824-A02B-45FF-ABD9-5FF28A853695}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CC0BA824-A02B-45FF-ABD9-5FF28A853695}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\webapi\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC7BA44E-BAFF-4DC5-B829-1EBC61ED3093}|WebAPI\\WebAPI.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC7BA44E-BAFF-4DC5-B829-1EBC61ED3093}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\webapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\authordtos\\createauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\authordtos\\createauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\abstract\\iauthorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\abstract\\iauthorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\dependencyresolver\\servicerestration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\dependencyresolver\\servicerestration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8141FAD7-A0D1-4C41-B313-E3AA16533CC6}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\concrete\\entityframework\\efmemberdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\concrete\\entityframework\\efmemberdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\concrete\\entityframework\\efauthordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\concrete\\entityframework\\efauthordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\concrete\\membermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\concrete\\membermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\concrete\\authormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\concrete\\authormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\concrete\\bookmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\concrete\\bookmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\bookdtos\\getbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\bookdtos\\getbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\abstract\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\abstract\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\bookdtos\\createbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\bookdtos\\createbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\authordtos\\getauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\authordtos\\getauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\business\\abstract\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\abstract\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\memberdtos\\getmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\memberdtos\\getmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\memberdtos\\updatememberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\memberdtos\\updatememberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\memberdtos\\creatememberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\memberdtos\\creatememberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\authordtos\\updateauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\authordtos\\updateauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\dtos\\bookdtos\\updatebookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\dtos\\bookdtos\\updatebookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\concrete\\entityframework\\efbookdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\concrete\\entityframework\\efbookdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\absract\\imemberdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\absract\\imemberdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\absract\\iauthordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\absract\\iauthordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\absract\\ibookdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\absract\\ibookdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\core\\dataaccess\\entities\\ientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|solutionrelative:core\\dataaccess\\entities\\ientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5ED06CAD-956C-C94D-BC0C-E89E30A887C2}|Core\\Core.csproj|solutionrelative:core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\entities\\concrete\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\concrete\\entityframework\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\concrete\\entityframework\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\migrations\\20260721130347_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\migrations\\20260721130347_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|c:\\users\\asus vivobook\\source\\repos\\libraryapi\\dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{45E8AD2D-F6CC-99C0-B6AF-489676982DA4}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,76 +166,257 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20260721130347_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
-              "RelativeToolTip": "DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T13:03:47.688Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Program.cs",
-              "RelativeToolTip": "WebAPI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Title": "MemberController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\MemberController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\MemberController.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\MemberController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\MemberController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T12:55:33.728Z",
+              "WhenOpened": "2026-07-21T15:27:40.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
-              "RelativeToolTip": "DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABqAAAAAAAAAA==",
+              "Title": "BookController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\BookController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\BookController.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\BookController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\BookController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAcwDIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T12:52:45.738Z",
+              "WhenOpened": "2026-07-21T15:27:19.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DataAccess",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\DataAccess.csproj",
-              "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\DataAccess.csproj",
-              "RelativeToolTip": "DataAccess\\DataAccess.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-21T12:52:13.531Z",
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\AuthorController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwCMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T15:27:03.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EfRepositorybase.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\EntityFramework\\EfRepositorybase.cs",
+              "RelativeDocumentMoniker": "Core\\DataAccess\\EntityFramework\\EfRepositorybase.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\EntityFramework\\EfRepositorybase.cs",
+              "RelativeToolTip": "Core\\DataAccess\\EntityFramework\\EfRepositorybase.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:11:56.679Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Member.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Member.cs",
-              "RelativeDocumentMoniker": "Entities\\Concrete\\Member.cs",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Member.cs",
-              "RelativeToolTip": "Entities\\Concrete\\Member.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Title": "IAuthorService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IAuthorService.cs",
+              "RelativeDocumentMoniker": "Business\\Abstract\\IAuthorService.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IAuthorService.cs",
+              "RelativeToolTip": "Business\\Abstract\\IAuthorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T12:51:08.433Z",
+              "WhenOpened": "2026-07-21T14:59:13.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateAuthorDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\CreateAuthorDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\AuthorDTOS\\CreateAuthorDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\CreateAuthorDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\AuthorDTOS\\CreateAuthorDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:48:22.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IRepositorybase.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\IRepositorybase.cs",
+              "RelativeDocumentMoniker": "Core\\DataAccess\\IRepositorybase.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\IRepositorybase.cs",
+              "RelativeToolTip": "Core\\DataAccess\\IRepositorybase.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:12:07.542Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "ServiceRestration.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\DependencyResolver\\ServiceRestration.cs",
+              "RelativeDocumentMoniker": "Business\\DependencyResolver\\ServiceRestration.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\DependencyResolver\\ServiceRestration.cs",
+              "RelativeToolTip": "Business\\DependencyResolver\\ServiceRestration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T15:23:00.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthorManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\AuthorManager.cs",
+              "RelativeDocumentMoniker": "Business\\Concrete\\AuthorManager.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\AuthorManager.cs",
+              "RelativeToolTip": "Business\\Concrete\\AuthorManager.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA/wCUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T15:05:53.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BookManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\BookManager.cs",
+              "RelativeDocumentMoniker": "Business\\Concrete\\BookManager.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\BookManager.cs",
+              "RelativeToolTip": "Business\\Concrete\\BookManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T15:05:43.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GetBookDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\GetBookDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\BookDTOs\\GetBookDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\GetBookDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\BookDTOs\\GetBookDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:21:37.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MemberManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\MemberManager.cs",
+              "RelativeDocumentMoniker": "Business\\Concrete\\MemberManager.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Concrete\\MemberManager.cs",
+              "RelativeToolTip": "Business\\Concrete\\MemberManager.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAACYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T15:06:01.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EfAuthorDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfAuthorDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Concrete\\EntityFramework\\EfAuthorDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfAuthorDAL.cs",
+              "RelativeToolTip": "DataAccess\\Concrete\\EntityFramework\\EfAuthorDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:20:23.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EfMemberDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfMemberDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Concrete\\EntityFramework\\EfMemberDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfMemberDAL.cs",
+              "RelativeToolTip": "DataAccess\\Concrete\\EntityFramework\\EfMemberDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:20:44.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IBookService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IBookService.cs",
+              "RelativeDocumentMoniker": "Business\\Abstract\\IBookService.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IBookService.cs",
+              "RelativeToolTip": "Business\\Abstract\\IBookService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:06:29.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CreateBookDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\CreateBookDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\BookDTOs\\CreateBookDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\CreateBookDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\BookDTOs\\CreateBookDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:22:54.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Business",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Business.csproj",
+              "RelativeDocumentMoniker": "Business\\Business.csproj",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Business.csproj",
+              "RelativeToolTip": "Business\\Business.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-21T14:05:59.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GetAuthorDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\GetAuthorDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\AuthorDTOS\\GetAuthorDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\GetAuthorDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\AuthorDTOS\\GetAuthorDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:50:12.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Book.cs",
               "RelativeDocumentMoniker": "Entities\\Concrete\\Book.cs",
@@ -128,7 +429,252 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
+              "Title": "IMemberService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IMemberService.cs",
+              "RelativeDocumentMoniker": "Business\\Abstract\\IMemberService.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Business\\Abstract\\IMemberService.cs",
+              "RelativeToolTip": "Business\\Abstract\\IMemberService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:59:26.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GetMemberDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\GetMemberDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\MemberDTOs\\GetMemberDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\GetMemberDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\MemberDTOs\\GetMemberDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:50:43.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UpdateMemberDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\UpdateMemberDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\MemberDTOs\\UpdateMemberDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\UpdateMemberDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\MemberDTOs\\UpdateMemberDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:51:08.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CreateMemberDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\CreateMemberDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\MemberDTOs\\CreateMemberDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\MemberDTOs\\CreateMemberDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\MemberDTOs\\CreateMemberDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:50:55.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UpdateAuthorDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\UpdateAuthorDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\AuthorDTOS\\UpdateAuthorDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\AuthorDTOS\\UpdateAuthorDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\AuthorDTOS\\UpdateAuthorDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:49:17.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UpdateBookDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\UpdateBookDTO.cs",
+              "RelativeDocumentMoniker": "Entities\\DTOs\\BookDTOs\\UpdateBookDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\DTOs\\BookDTOs\\UpdateBookDTO.cs",
+              "RelativeToolTip": "Entities\\DTOs\\BookDTOs\\UpdateBookDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:23:25.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EfBookDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfBookDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Concrete\\EntityFramework\\EfBookDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\EfBookDAL.cs",
+              "RelativeToolTip": "DataAccess\\Concrete\\EntityFramework\\EfBookDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:19:31.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IMemberDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IMemberDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Absract\\IMemberDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IMemberDAL.cs",
+              "RelativeToolTip": "DataAccess\\Absract\\IMemberDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:18:53.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IAuthorDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IAuthorDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Absract\\IAuthorDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IAuthorDAL.cs",
+              "RelativeToolTip": "DataAccess\\Absract\\IAuthorDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:18:26.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IBookDAL.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IBookDAL.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Absract\\IBookDAL.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Absract\\IBookDAL.cs",
+              "RelativeToolTip": "DataAccess\\Absract\\IBookDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:17:58.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Entities.csproj",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Entities.csproj",
+              "RelativeDocumentMoniker": "Entities\\Entities.csproj",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Entities.csproj",
+              "RelativeToolTip": "Entities\\Entities.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-21T12:44:09.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IEntity.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\Entities\\IEntity.cs",
+              "RelativeDocumentMoniker": "Core\\DataAccess\\Entities\\IEntity.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\DataAccess\\Entities\\IEntity.cs",
+              "RelativeToolTip": "Core\\DataAccess\\Entities\\IEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:11:00.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Core",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\Core.csproj",
+              "RelativeDocumentMoniker": "Core\\Core.csproj",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Core\\Core.csproj",
+              "RelativeToolTip": "Core\\Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-21T14:07:07.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "20260721130347_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
+              "RelativeToolTip": "DataAccess\\Migrations\\20260721130347_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T13:03:47.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
+              "RelativeToolTip": "DataAccess\\Concrete\\EntityFramework\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T12:52:45.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DataAccess.csproj",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\DataAccess.csproj",
+              "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\DataAccess\\DataAccess.csproj",
+              "RelativeToolTip": "DataAccess\\DataAccess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-21T12:52:13.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Common\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\Common\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Common\\BaseEntity.cs",
+              "RelativeToolTip": "Entities\\Concrete\\Common\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T12:44:48.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T12:55:33.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Member.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Member.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\Member.cs",
+              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Member.cs",
+              "RelativeToolTip": "Entities\\Concrete\\Member.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T12:51:08.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Author.cs",
               "RelativeDocumentMoniker": "Entities\\Concrete\\Author.cs",
@@ -137,32 +683,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-21T12:45:28.38Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Common\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Entities\\Concrete\\Common\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Concrete\\Common\\BaseEntity.cs",
-              "RelativeToolTip": "Entities\\Concrete\\Common\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T12:44:48.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Entities",
-              "DocumentMoniker": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Entities.csproj",
-              "RelativeDocumentMoniker": "Entities\\Entities.csproj",
-              "ToolTip": "C:\\Users\\ASUS VIVOBOOK\\source\\repos\\LibraryAPI\\Entities\\Entities.csproj",
-              "RelativeToolTip": "Entities\\Entities.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-21T12:44:09.903Z",
               "EditorCaption": ""
             }
           ]
