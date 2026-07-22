@@ -20,34 +20,33 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAllBooks()
         {
             var result = await _bookService.GetAllBooksAsync();
-            return Ok(result);
+            return StatusCode((int)result.StatusCode, result);
         }
         [HttpGet("getbookbyid/{id}")]
         public async Task<IActionResult> GetBookById(Guid id)
         {
             var result = await _bookService.GetByIdAsync(id);
-            if (result == null)
-                return NotFound();
-            return Ok(result);
+           
+            return StatusCode((int)result.StatusCode, result);
         }
         [HttpPost("addbook")]
         public async Task<IActionResult> CreateBook(CreateBookDTO entity)
         {
-            await _bookService.AddAsync(entity);
-            return Ok("Book added successfully.");
+            var result = await _bookService.AddAsync(entity);
+            return StatusCode((int)result.StatusCode, result);
         }
         [HttpPut("updatebook/{id}")]
         public async Task<IActionResult> UpdateBook(Guid id, UpdateBookDTO entity)
         {
-            await _bookService.UpdateAsync(id, entity);
-            return Ok("Book updated successfully.");
+            var result = await _bookService.UpdateAsync(id, entity);
+            return StatusCode((int)result.StatusCode, result);
         }
 
         [HttpDelete("deletebook/{id}")]
         public async Task<IActionResult> DeleteBook(Guid id)
         {
-            await _bookService.DeleteAsync(id);
-            return Ok("Book deleted successfully.");
+            var result = await _bookService.DeleteAsync(id);
+            return StatusCode((int)result.StatusCode, result);
         }
     }
 }

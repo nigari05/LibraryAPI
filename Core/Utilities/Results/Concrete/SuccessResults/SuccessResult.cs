@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Utilities.Results.Concrete.SuccessResults
 {
-    internal class SuccessResult : Result
+    public class SuccessResult : Result
     {
         public SuccessResult(HttpStatusCode statusCode) : base(statusCode, true)
         {

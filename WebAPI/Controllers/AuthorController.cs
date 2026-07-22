@@ -33,22 +33,22 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAuthor(CreateAuthorDTO entity)
         {
-            await _authorService.AddAsync(entity);
-            return Ok("Author added successfully.");
+            var result = await _authorService.AddAsync(entity);
+            return StatusCode((int)result.StatusCode, result);
 
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAuthor(Guid id, UpdateAuthorDTO entity)
         {
-            await _authorService.UpdateAsync(id, entity);
-            return Ok("Author updated successfully.");
+           var result = await _authorService.UpdateAsync(id, entity);
+           return StatusCode((int)result.StatusCode, result);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(Guid id)
         {
-            await _authorService.DeleteAsync(id);
-            return Ok("Author deleted successfully.");
+            var result = await _authorService.DeleteAsync(id);
+            return StatusCode((int)result.StatusCode, result);
         }
     }
 }

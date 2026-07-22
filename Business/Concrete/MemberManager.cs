@@ -1,9 +1,13 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete.ErrorResults;
+using Core.Utilities.Results.Concrete.SuccessResults;
 using DataAccess.Absract;
 using Entities.Concrete;
 using Entities.DTOs.MemberDTOs;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Business.Concrete
@@ -17,7 +21,7 @@ namespace Business.Concrete
             _memberDAL = memberDAL;
         }
 
-        public async Task AddAsync(CreateMemberDTO entity)
+        public async Task<IResult> AddAsync(CreateMemberDTO entity)
         {
             var member = new Member
             {
@@ -27,60 +31,64 @@ namespace Business.Concrete
             };
 
             await _memberDAL.AddAsync(member);
+            return new SuccessResult(HttpStatusCode.Created, "Member added successfully.");
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<IResult> DeleteAsync(Guid id)
         {
             var member = await _memberDAL.GetByIdAsync(id);
 
             if (member == null)
-                throw new Exception("Member not found.");
+                throw new KeyNotFoundException("Book not found.");
 
             await _memberDAL.DeleteAsync(member);
+            return new SuccessResult(HttpStatusCode.NoContent, "Member deleted successfully.");
         }
 
-        public async Task<List<GetMemberDTO>> GetAllAsync()
+        public async Task<IDataResult<IList<GetMemberDTO>>> GetAllAsync()
         {
             var members = await _memberDAL.GetAllAsync();
 
-            return members.Select(member => new GetMemberDTO
+            var model = members.Select(member => new GetMemberDTO
             {
                 Id = member.Id,
                 FirstName = member.FirstName,
                 LastName = member.LastName,
                 Email = member.Email
             }).ToList();
+            return new SuccessDataResult<IList<GetMemberDTO>>(HttpStatusCode.OK, "Members retrieved successfully.", model);
         }
 
-        public async Task<GetMemberDTO?> GetByIdAsync(Guid id)
+        public async Task<IDataResult<GetMemberDTO?>> GetByIdAsync(Guid id)
         {
             var member = await _memberDAL.GetByIdAsync(id);
 
             if (member == null)
-                return null;
+                throw new KeyNotFoundException("Book not found.");
 
-            return new GetMemberDTO
+            GetMemberDTO model = new GetMemberDTO
             {
                 Id = member.Id,
                 FirstName = member.FirstName,
                 LastName = member.LastName,
                 Email = member.Email
             };
+            return new SuccessDataResult<GetMemberDTO?>(HttpStatusCode.OK, "Member retrieved successfully.", model);
         }
 
-        public async Task UpdateAsync(Guid id, UpdateMemberDTO entity)
+        public async Task<IResult> UpdateAsync(Guid id, UpdateMemberDTO entity)
         {
             var member = await _memberDAL.GetByIdAsync(id);
 
             if (member == null)
-                throw new Exception("Member not found.");
+                throw new KeyNotFoundException("Book not found.");
 
             member.FirstName = entity.FirstName;
             member.LastName = entity.LastName;
             member.Email = entity.Email;
 
             await _memberDAL.UpdateAsync(member);
-        }
+            return new SuccessResult(HttpStatusCode.NoContent, "Member updated successfully.");
         }
     }
 }

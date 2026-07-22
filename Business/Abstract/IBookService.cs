@@ -1,4 +1,5 @@
-﻿using Entities.DTOs.BookDTOs;
+﻿using Core.Utilities.Results.Abstract;
+using Entities.DTOs.BookDTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,14 +8,14 @@ namespace Business.Abstract
 {
     public interface IBookService
     {
-        Task<List<GetBookDTO>> GetAllBooksAsync();
-         Task<GetBookDTO?> GetByIdAsync(Guid id);
+        Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync();
+         Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id);
 
-        Task AddAsync(CreateBookDTO entity);
+        Task<IResult> AddAsync(CreateBookDTO entity);
 
-        Task UpdateAsync(Guid id, UpdateBookDTO entity);
+        Task<IResult> UpdateAsync(Guid id, UpdateBookDTO entity);
 
-        Task DeleteAsync(Guid id);
+        Task<IResult> DeleteAsync(Guid id);
 
     }
 }

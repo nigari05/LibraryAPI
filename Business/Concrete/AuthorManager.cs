@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results.Abstract;
 using DataAccess.Absract;
 using Entities.Concrete;
 using Entities.DTOs.AuthorDTOS;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
+using Core.Utilities.Results.Concrete.SuccessResults;
+using Core.Utilities.Results.Concrete.ErrorResults;
 
 namespace Business.Concrete
 {
@@ -17,7 +21,7 @@ namespace Business.Concrete
             _authorDAL = authorDAL;
         }
 
-        public async Task AddAsync(CreateAuthorDTO entity)
+        public async Task<IResult> AddAsync(CreateAuthorDTO entity)
         {
             var author = new Author
             {
@@ -26,56 +30,68 @@ namespace Business.Concrete
             };
 
             await _authorDAL.AddAsync(author);
+            return new SuccessResult(HttpStatusCode.Created, "Author created successfully.");
+
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<IResult> DeleteAsync(Guid id)
         {
             var author = await _authorDAL.GetByIdAsync(id);
 
             if (author == null)
-                throw new Exception("Author not found.");
+                throw new KeyNotFoundException("Book not found.");
 
             await _authorDAL.DeleteAsync(author);
+            return new SuccessResult(HttpStatusCode.NoContent, "Author deleted successfully. ");
         }
 
-        public async Task<List<GetAuthorDTO>> GetAllAsync()
+        public async Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync()
         {
             var authors = await _authorDAL.GetAllAsync();
 
-            return authors.Select(author => new GetAuthorDTO
+            List<GetAuthorDTO> models = authors.Select(author => new GetAuthorDTO
             {
                 Id = author.Id,
                 FullName = author.FullName,
                 Biography = author.Biography
             }).ToList();
+            return new SuccessDataResult<List<GetAuthorDTO>>(HttpStatusCode.OK, models);
+
         }
 
-        public async Task<GetAuthorDTO?> GetByIdAsync(Guid id)
+        public async Task<IDataResult<GetAuthorDTO>?> GetByIdAsync(Guid id)
         { 
             var author = await _authorDAL.GetByIdAsync(id);
 
             if (author == null)
-                return null;
+                throw new KeyNotFoundException("Book not found.");
 
-            return new GetAuthorDTO
+
+            GetAuthorDTO model = new() 
             {
                 Id = author.Id,
                 FullName = author.FullName,
                 Biography = author.Biography
             };
+            return new SuccessDataResult<GetAuthorDTO>(HttpStatusCode.OK, model);
+
+
         }
 
-        public async Task UpdateAsync(Guid id, UpdateAuthorDTO entity)
+        public async Task<IResult> UpdateAsync(Guid id, UpdateAuthorDTO entity)
         {
             var author = await _authorDAL.GetByIdAsync(id);
 
             if (author == null)
-                throw new Exception("Author not found.");
+                throw new KeyNotFoundException("Book not found.");
+
 
             author.FullName = entity.FullName;
             author.Biography = entity.Biography;
 
             await _authorDAL.UpdateAsync(author);
+            return new SuccessResult(HttpStatusCode.NoContent, "Author updated successfully.");
+
         }
     }
 }
