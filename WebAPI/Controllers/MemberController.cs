@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Entities.DTOs.MemberDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllMembers()
+        public async Task<IActionResult> GetAllMembers([FromQuery] PaginationParameters pagination)
         {
-            var result = await _memberService.GetAllAsync();
+            var result = await _memberService.GetAllAsync(pagination);
             return StatusCode((int)result.StatusCode, result);
         }
         [HttpGet("{id}")]

@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using Core.Utilities.Results.Concrete.SuccessResults;
 using Core.Utilities.Results.Concrete.ErrorResults;
+using Core.Utilities.Pagination;
 
 namespace Business.Concrete
 {
@@ -45,9 +46,9 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Author deleted successfully. ");
         }
 
-        public async Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync()
+        public async Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync(PaginationParameters pagination)
         {
-            var authors = await _authorDAL.GetAllAsync();
+            var authors = await _authorDAL.GetAllAsync(pagination);
 
             List<GetAuthorDTO> models = authors.Select(author => new GetAuthorDTO
             {

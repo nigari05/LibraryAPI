@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Entities.DTOs.AuthorDTOS;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAuthors()
+        public async Task<IActionResult> GetAllAuthors([FromQuery] PaginationParameters pagination)
         {
-            var authors = await _authorService.GetAllAsync();
+            var authors = await _authorService.GetAllAsync(pagination);
             return Ok(authors);
         }
         [HttpGet]

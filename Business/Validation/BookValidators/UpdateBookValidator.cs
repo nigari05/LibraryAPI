@@ -28,4 +28,5 @@ namespace Business.Validation.BookValidators
                 .NotEmpty().WithMessage("Author must be selected.");
 
         }
+    }
 }

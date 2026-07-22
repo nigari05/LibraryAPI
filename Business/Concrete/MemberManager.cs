@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
 using Core.Utilities.Results.Concrete.SuccessResults;
@@ -45,9 +46,9 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Member deleted successfully.");
         }
 
-        public async Task<IDataResult<IList<GetMemberDTO>>> GetAllAsync()
+        public async Task<IDataResult<List<GetMemberDTO>>> GetAllAsync(PaginationParameters pagination)
         {
-            var members = await _memberDAL.GetAllAsync();
+            var members = await _memberDAL.GetAllAsync(pagination);
 
             var model = members.Select(member => new GetMemberDTO
             {
@@ -56,7 +57,7 @@ namespace Business.Concrete
                 LastName = member.LastName,
                 Email = member.Email
             }).ToList();
-            return new SuccessDataResult<IList<GetMemberDTO>>(HttpStatusCode.OK, "Members retrieved successfully.", model);
+            return new SuccessDataResult<List<GetMemberDTO>>(HttpStatusCode.OK, "Members retrieved successfully.", model);
         }
 
         public async Task<IDataResult<GetMemberDTO?>> GetByIdAsync(Guid id)
@@ -90,5 +91,7 @@ namespace Business.Concrete
             await _memberDAL.UpdateAsync(member);
             return new SuccessResult(HttpStatusCode.NoContent, "Member updated successfully.");
         }
+
+    
     }
 }

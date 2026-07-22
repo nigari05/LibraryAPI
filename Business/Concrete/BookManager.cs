@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
 using Core.Utilities.Results.Concrete.SuccessResults;
@@ -49,9 +50,9 @@ namespace Business.Concrete
 
         
 
-        public async Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync()
+        public async Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync(PaginationParameters pagination )
         {
-            var books = await _bookDAL.GetAllAsync();
+            var books = await _bookDAL.GetAllAsync(pagination);
 
             List<GetBookDTO> bookDTOs =  books.Select(book => new GetBookDTO  
             {

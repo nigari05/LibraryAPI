@@ -19,6 +19,7 @@ namespace Business.DependencyResolver
             services.AddScoped<IMemberDAL, EfMemberDAL>();
             services.AddScoped<IBookDAL, EfBookDAL>();
             services.AddValidatorsFromAssemblyContaining<CreateBookValidator>();
-            
+
         }
     }
+}

@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Utilities.Pagination;
+using Core.Utilities.Results.Abstract;
 using Entities.DTOs.BookDTOs;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace Business.Abstract
 {
     public interface IBookService
     {
-        Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync();
+        Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync(PaginationParameters paginationParameters);
          Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id);
 
         Task<IResult> AddAsync(CreateBookDTO entity);

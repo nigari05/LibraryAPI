@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Utilities.Pagination;
+using Core.Utilities.Results.Abstract;
 using Entities.DTOs.AuthorDTOS;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace Business.Abstract
 {
     public interface IAuthorService
     {
-        Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync();
+        Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync(PaginationParameters pagination);
 
         Task<IDataResult<GetAuthorDTO?>> GetByIdAsync(Guid id);
 

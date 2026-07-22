@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Utilities.Pagination;
+using Core.Utilities.Results.Abstract;
 using Entities.DTOs.MemberDTOs;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,8 @@ namespace Business.Abstract
 {
     public interface IMemberService
     {
-        Task<IDataResult<List<GetMemberDTO>>> GetAllAsync();
+        Task<IDataResult<List<GetMemberDTO>>> GetAllAsync(PaginationParameters pagination);
+
 
         Task<IDataResult<GetMemberDTO?>> GetByIdAsync(Guid id);
 

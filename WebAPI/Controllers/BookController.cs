@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Entities.DTOs.BookDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getallbooks")]
-        public async Task<IActionResult> GetAllBooks()
+        public async Task<IActionResult> GetAllBooks([FromQuery]PaginationParameters pagination)
         {
-            var result = await _bookService.GetAllBooksAsync();
+            var result = await _bookService.GetAllBooksAsync(pagination);
             return StatusCode((int)result.StatusCode, result);
         }
         [HttpGet("getbookbyid/{id}")]
