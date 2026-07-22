@@ -3,5 +3,6 @@
   <Project Path="Core/Core.csproj" />
   <Project Path="DataAccess/DataAccess.csproj" />
   <Project Path="Entities/Entities.csproj" />
+  <Project Path="Tests/Tests.csproj" Id="26924bbf-ad44-4f1c-a782-c73b21d8a83b" />
   <Project Path="WebAPI/WebAPI.csproj" />
 </Solution>

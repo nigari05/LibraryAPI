@@ -17,13 +17,13 @@ namespace WebAPI.Controllers
             _authorService = authorService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllAuthors([FromQuery] PaginationParameters pagination)
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAllAuthorsAsync([FromQuery] PaginationParameters pagination)
         {
             var authors = await _authorService.GetAllAsync(pagination);
             return Ok(authors);
         }
-        [HttpGet]
+        [HttpGet("getById")]
         public async Task<IActionResult> GetAuthorById(Guid id)
         {
             var author = await _authorService.GetByIdAsync(id);
