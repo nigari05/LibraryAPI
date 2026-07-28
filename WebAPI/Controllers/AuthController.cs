@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.DTOs.UserDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDTO entity)
         {
             var result = await _authService.RegisterAsync(entity);
@@ -26,6 +28,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDTO entity)
         {
             var result = await _authService.LoginAsync(entity);
