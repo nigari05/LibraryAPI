@@ -51,7 +51,8 @@ namespace Business.Concrete
                 UserName = entity.UserName,
                 Email = entity.Email,
 
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(entity.Password)
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(entity.Password),
+                Role = "User"
             };
 
             await _userDAL.AddAsync(user);
