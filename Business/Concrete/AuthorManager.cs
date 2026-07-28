@@ -20,11 +20,13 @@ namespace Business.Concrete
     {
         private readonly IAuthorDAL _authorDAL;
         private readonly IUserDAL _userDAL;
+        private readonly IJWTService _jwtService;
 
-        public AuthorManager(IAuthorDAL authorDAL, IUserDAL userDAL)
+        public AuthorManager(IAuthorDAL authorDAL, IUserDAL userDAL, IJWTService jwtService)
         {
             _authorDAL = authorDAL;
             _userDAL = userDAL;
+            _jwtService = jwtService;
         }
 
         public async Task<IResult> AddAsync(CreateAuthorDTO entity)
@@ -96,7 +98,9 @@ namespace Business.Concrete
             if (!check)
                 return new ErrorResult(HttpStatusCode.BadRequest, "Password is incorrect.");
 
-            return new SuccessResult(HttpStatusCode.OK, "Login successful.");
+            var token = _jwtService.GenerateToken(user);
+
+            return new SuccessDataResult<string>(HttpStatusCode.OK, token);
         }
 
         public async Task<IResult> RegisterAsync(RegisterDTO entity)
