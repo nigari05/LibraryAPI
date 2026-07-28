@@ -84,14 +84,14 @@ namespace Business.Concrete
 
         }
 
-        public async Task<IResult> LoginAsync(LoginDTO dto)
+        public async Task<IResult> LoginAsync(LoginDTO entity)
         {
-            var user = await _userDAL.GetByEmailAsync(dto.Email);
+            var user = await _userDAL.GetByEmailAsync(entity.Email);
 
             if (user == null)
                 return new ErrorResult(HttpStatusCode.NotFound, "User not found.");
 
-            bool check = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
+            bool check = BCrypt.Net.BCrypt.Verify(entity.Password, user.PasswordHash);
 
             if (!check)
                 return new ErrorResult(HttpStatusCode.BadRequest, "Password is incorrect.");

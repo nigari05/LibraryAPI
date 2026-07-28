@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Pagination;
+using Entities.Concrete.UserDTOs;
 using Entities.DTOs.AuthorDTOS;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,22 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> DeleteAuthor(Guid id)
         {
             var result = await _authorService.DeleteAsync(id);
+            return StatusCode((int)result.StatusCode, result);
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterDTO entity)
+        {
+            var result = await _authorService.RegisterAsync(entity);
+
+            return StatusCode((int)result.StatusCode, result);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDTO entity)
+        {
+            var result = await _authorService.LoginAsync(entity);
+
             return StatusCode((int)result.StatusCode, result);
         }
     }
