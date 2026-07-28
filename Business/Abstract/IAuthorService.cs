@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
+using Entities.Concrete.UserDTOs;
 using Entities.DTOs.AuthorDTOS;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,8 @@ namespace Business.Abstract
         Task<IResult> UpdateAsync(Guid id, UpdateAuthorDTO entity);
 
         Task<IResult> DeleteAsync(Guid id);
+        Task<IResult> RegisterAsync(RegisterDTO dto);
+
+        Task<IResult> LoginAsync(LoginDTO dto);
     }
 }

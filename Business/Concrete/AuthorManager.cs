@@ -1,25 +1,30 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete.ErrorResults;
+using Core.Utilities.Results.Concrete.SuccessResults;
 using DataAccess.Absract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Concrete.UserDTOs;
 using Entities.DTOs.AuthorDTOS;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
-using Core.Utilities.Results.Concrete.SuccessResults;
-using Core.Utilities.Results.Concrete.ErrorResults;
-using Core.Utilities.Pagination;
 
 namespace Business.Concrete
 {
     public class AuthorManager : IAuthorService
     {
         private readonly IAuthorDAL _authorDAL;
+        private readonly IUserDAL _userDAL;
 
-        public AuthorManager(IAuthorDAL authorDAL)
+        public AuthorManager(IAuthorDAL authorDAL, IUserDAL userDAL)
         {
             _authorDAL = authorDAL;
+            _userDAL = userDAL;
         }
 
         public async Task<IResult> AddAsync(CreateAuthorDTO entity)
@@ -77,6 +82,38 @@ namespace Business.Concrete
             return new SuccessDataResult<GetAuthorDTO>(HttpStatusCode.OK, model);
 
 
+        }
+
+        public async Task<IResult> LoginAsync(LoginDTO dto)
+        {
+            var user = await _userDAL.GetByEmailAsync(dto.Email);
+
+            if (user == null)
+                return new ErrorResult(HttpStatusCode.NotFound, "User not found.");
+
+            bool check = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
+
+            if (!check)
+                return new ErrorResult(HttpStatusCode.BadRequest, "Password is incorrect.");
+
+            return new SuccessResult(HttpStatusCode.OK, "Login successful.");
+        }
+
+        public async Task<IResult> RegisterAsync(RegisterDTO entity)
+        {
+            var user = new User
+            {
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                UserName = entity.UserName,
+                Email = entity.Email,
+
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(entity.Password)
+            };
+
+            await _userDAL.AddAsync(user);
+
+            return new SuccessResult(HttpStatusCode.Created, "User registered successfully.");
         }
 
         public async Task<IResult> UpdateAsync(Guid id, UpdateAuthorDTO entity)
