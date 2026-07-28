@@ -53,20 +53,6 @@ namespace WebAPI.Controllers
             return StatusCode((int)result.StatusCode, result);
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterDTO entity)
-        {
-            var result = await _authorService.RegisterAsync(entity);
-
-            return StatusCode((int)result.StatusCode, result);
-        }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDTO entity)
-        {
-            var result = await _authorService.LoginAsync(entity);
-
-            return StatusCode((int)result.StatusCode, result);
-        }
+       
     }
 }

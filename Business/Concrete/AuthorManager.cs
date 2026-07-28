@@ -19,14 +19,11 @@ namespace Business.Concrete
     public class AuthorManager : IAuthorService
     {
         private readonly IAuthorDAL _authorDAL;
-        private readonly IUserDAL _userDAL;
-        private readonly IJWTService _jwtService;
+      
 
-        public AuthorManager(IAuthorDAL authorDAL, IUserDAL userDAL, IJWTService jwtService)
+        public AuthorManager(IAuthorDAL authorDAL)
         {
             _authorDAL = authorDAL;
-            _userDAL = userDAL;
-            _jwtService = jwtService;
         }
 
         public async Task<IResult> AddAsync(CreateAuthorDTO entity)
@@ -86,39 +83,7 @@ namespace Business.Concrete
 
         }
 
-        public async Task<IResult> LoginAsync(LoginDTO entity)
-        {
-            var user = await _userDAL.GetByEmailAsync(entity.Email);
-
-            if (user == null)
-                return new ErrorResult(HttpStatusCode.NotFound, "User not found.");
-
-            bool check = BCrypt.Net.BCrypt.Verify(entity.Password, user.PasswordHash);
-
-            if (!check)
-                return new ErrorResult(HttpStatusCode.BadRequest, "Password is incorrect.");
-
-            var token = _jwtService.GenerateToken(user);
-
-            return new SuccessDataResult<string>(HttpStatusCode.OK, token);
-        }
-
-        public async Task<IResult> RegisterAsync(RegisterDTO entity)
-        {
-            var user = new User
-            {
-                FirstName = entity.FirstName,
-                LastName = entity.LastName,
-                UserName = entity.UserName,
-                Email = entity.Email,
-
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(entity.Password)
-            };
-
-            await _userDAL.AddAsync(user);
-
-            return new SuccessResult(HttpStatusCode.Created, "User registered successfully.");
-        }
+     
 
         public async Task<IResult> UpdateAsync(Guid id, UpdateAuthorDTO entity)
         {

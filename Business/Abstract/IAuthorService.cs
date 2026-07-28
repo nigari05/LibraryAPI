@@ -19,8 +19,6 @@ namespace Business.Abstract
         Task<IResult> UpdateAsync(Guid id, UpdateAuthorDTO entity);
 
         Task<IResult> DeleteAsync(Guid id);
-        Task<IResult> RegisterAsync(RegisterDTO dto);
-
-        Task<IResult> LoginAsync(LoginDTO dto);
+       
     }
 }
