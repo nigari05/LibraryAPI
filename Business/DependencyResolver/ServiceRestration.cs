@@ -27,7 +27,7 @@ namespace Business.DependencyResolver
             services.AddScoped<IBookService, BookManager>();
             services.AddValidatorsFromAssemblyContaining<CreateBookValidator>();
             services.AddScoped<IUserDAL, EfUserDAL>();
-
+            services.AddScoped<IJWTService, JWTManager>();
         }
     }
 }
