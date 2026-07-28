@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concrete.UserDTOs
+namespace Entities.DTOs.UserDTOs
 {
     public record LoginDTO
    (

@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Pagination;
-using Entities.Concrete.UserDTOs;
 using Entities.DTOs.AuthorDTOS;
+using Entities.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

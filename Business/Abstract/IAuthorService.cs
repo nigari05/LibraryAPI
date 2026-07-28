@@ -1,7 +1,7 @@
 ﻿using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
-using Entities.Concrete.UserDTOs;
 using Entities.DTOs.AuthorDTOS;
+using Entities.DTOs.UserDTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
