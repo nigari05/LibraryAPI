@@ -20,6 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getallbooks")]
+        [Authorize]
         public async Task<IActionResult> GetAllBooks([FromQuery]PaginationParameters pagination)
         {
             var result = await _bookService.GetAllBooksAsync(pagination);
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers
             return StatusCode((int)result.StatusCode, result);
         }
         [HttpPost("addbook")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> CreateBook(CreateBookDTO entity)
         {
             var result = await _bookService.AddAsync(entity);
@@ -46,6 +48,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("deletebook/{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteBook(Guid id)
         {
             var result = await _bookService.DeleteAsync(id);

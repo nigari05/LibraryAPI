@@ -2,6 +2,7 @@
 using Core.Utilities.Pagination;
 using Entities.DTOs.AuthorDTOS;
 using Entities.DTOs.UserDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getAll")]
+        [Authorize]
         public async Task<IActionResult> GetAllAuthorsAsync([FromQuery] PaginationParameters pagination)
         {
             var authors = await _authorService.GetAllAsync(pagination);
@@ -33,6 +35,8 @@ namespace WebAPI.Controllers
             return Ok(author);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> CreateAuthor(CreateAuthorDTO entity)
         {
             var result = await _authorService.AddAsync(entity);
@@ -40,6 +44,8 @@ namespace WebAPI.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> UpdateAuthor(Guid id, UpdateAuthorDTO entity)
         {
            var result = await _authorService.UpdateAsync(id, entity);
@@ -47,6 +53,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteAuthor(Guid id)
         {
             var result = await _authorService.DeleteAsync(id);
