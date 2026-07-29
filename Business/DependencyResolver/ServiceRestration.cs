@@ -33,6 +33,7 @@ namespace Business.DependencyResolver
             services.AddScoped<IUserDAL, EfUserDAL>();
             services.AddScoped<IJWTService, JWTManager>();
             services.AddScoped<IAuthService, AuthManager>();
+            services.AddScoped<IUserService, UserManager>();
         }
     }
 }
