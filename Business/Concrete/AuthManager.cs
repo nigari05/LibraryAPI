@@ -14,7 +14,6 @@ namespace Business.Concrete
 {
     internal class AuthManager : IAuthService
     {
-        private readonly IAuthService _authService;
         private readonly IUserDAL _userDAL;
         private readonly IJWTService _jwtService;
 
