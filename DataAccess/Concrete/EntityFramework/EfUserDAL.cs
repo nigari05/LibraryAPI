@@ -8,7 +8,13 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfUserDAL
+    public class EfUserDAL : EfRepositorybase<AppUser, AppDbContext>, IUserDAL
     {
+        public async Task<AppUser?> GetByEmailAsync(string email)
+        {
+            using AppDbContext context = new();
+
+            return await context.AppUsers.FirstOrDefaultAsync(x => x.Email == email);
+        }
     }
 }

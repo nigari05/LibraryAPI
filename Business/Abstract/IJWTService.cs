@@ -7,6 +7,6 @@ namespace Business.Abstract
 {
     public interface IJWTService
     {
-        string GenerateToken(User user);
+        string GenerateToken(AppUser user);
     }
 }

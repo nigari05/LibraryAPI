@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Member> Members { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
     }
 }

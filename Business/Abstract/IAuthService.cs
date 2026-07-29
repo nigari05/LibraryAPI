@@ -9,7 +9,6 @@ namespace Business.Abstract
     public interface IAuthService
     {
         Task<IResult> RegisterAsync(RegisterDTO entity);
-
-        Task<IResult> LoginAsync(LoginDTO entity);
+        Task<IDataResult<string>> LoginAsync(LoginDTO entity);
     }
 }

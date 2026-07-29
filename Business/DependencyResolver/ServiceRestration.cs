@@ -5,7 +5,10 @@ using Business.Validation.BookValidators;
 using Business.Validation.MemberValidators;
 using DataAccess.Absract;
 using DataAccess.Concrete.EntityFramework;
+using DataAccess.Migrations;
+using Entities.Concrete;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,8 +29,10 @@ namespace Business.DependencyResolver
             services.AddScoped<IBookDAL, EfBookDAL>();
             services.AddScoped<IBookService, BookManager>();
             services.AddValidatorsFromAssemblyContaining<CreateBookValidator>();
+
             services.AddScoped<IUserDAL, EfUserDAL>();
             services.AddScoped<IJWTService, JWTManager>();
+            services.AddScoped<IAuthService, AuthManager>();
         }
     }
 }
