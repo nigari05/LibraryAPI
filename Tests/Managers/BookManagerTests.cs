@@ -1,11 +1,11 @@
-﻿using Business.Concrete;
+﻿using AutoMapper;
+using Business.Concrete;
+using Business.Mapping;
 using DataAccess.Absract;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Tests.Managers
@@ -13,12 +13,17 @@ namespace Tests.Managers
     public class BookManagerTests
     {
         private readonly Mock<IBookDAL> _bookDalMock;
+        private readonly IMapper _mapper;
         private readonly BookManager _bookManager;
 
         public BookManagerTests()
         {
             _bookDalMock = new Mock<IBookDAL>();
-            _bookManager = new BookManager(_bookDalMock.Object);
+
+            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<BookProfile>(), NullLoggerFactory.Instance);
+            _mapper = mapperConfig.CreateMapper();
+
+            _bookManager = new BookManager(_bookDalMock.Object, _mapper);
         }
 
         [Fact]
