@@ -6,8 +6,8 @@ using System.Text;
 namespace Entities.Concrete
 {
     public class Author : BaseEntity
-    { 
-        public string? FullName { get; set; } 
+    {
+        public string FullName { get; set; } = null!;
         public string? Biography { get; set; }
 
         public ICollection<Book>? Books { get; set; }
