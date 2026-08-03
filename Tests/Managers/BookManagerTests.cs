@@ -120,5 +120,58 @@ namespace Tests.Managers
             Assert.Equal(dto.Title, book.Title);
             Assert.Equal(dto.Price, book.Price);
         }
+
+
+        [Fact]
+        public async Task GetByIdAsync_Should_Throw_When_Book_Not_Found()
+        {
+            var id = Guid.NewGuid();
+
+            _bookDalMock
+                .Setup(x => x.GetByIdAsync(id))
+                .ReturnsAsync((Book?)null);
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _bookManager.GetByIdAsync(id));
+        }
+
+        [Fact]
+        public async Task DeleteAsync_Should_Throw_When_Book_Not_Found()
+        {
+            var id = Guid.NewGuid();
+
+            _bookDalMock
+                .Setup(x => x.GetByIdAsync(id))
+                .ReturnsAsync((Book?)null);
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _bookManager.DeleteAsync(id));
+
+            _bookDalMock.Verify(x => x.DeleteAsync(It.IsAny<Book>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_Should_Throw_When_Book_Not_Found()
+        {
+            var id = Guid.NewGuid();
+
+            var dto = new UpdateBookDTO
+            {
+                Title = "Doesn't Matter",
+                Description = "N/A",
+                Price = 10,
+                Stock = 1,
+                AuthorId = Guid.NewGuid()
+            };
+
+            _bookDalMock
+                .Setup(x => x.GetByIdAsync(id))
+                .ReturnsAsync((Book?)null);
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _bookManager.UpdateAsync(id, dto));
+
+            _bookDalMock.Verify(x => x.UpdateAsync(It.IsAny<Book>()), Times.Never);
+        }
     }
 }
