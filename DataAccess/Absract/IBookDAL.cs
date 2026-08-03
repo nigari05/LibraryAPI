@@ -12,5 +12,6 @@ namespace DataAccess.Absract
     {
         Task<List<Book>> GetAllAsync(PaginationParameters pagination);
 
+
     }
 }
