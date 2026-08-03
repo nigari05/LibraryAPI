@@ -10,7 +10,7 @@ namespace DataAccess.Absract
 {
     public interface IBookDAL : IRepositorybase<Book>
     {
-        Task<List<Book>> GetAllAsync(PaginationParameters pagination);
+        Task<(List<Book> Books, int TotalCount)> GetAllAsync(PaginationParameters pagination);
 
 
     }

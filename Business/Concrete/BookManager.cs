@@ -48,23 +48,24 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Book deleted successfully.");
         }
 
-        
 
-        public async Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync(PaginationParameters pagination )
+
+        public async Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync(PaginationParameters paginationParameters)
         {
-            var books = await _bookDAL.GetAllAsync(pagination);
+            var (books, totalCount) = await _bookDAL.GetAllAsync(paginationParameters);
 
-            List<GetBookDTO> bookDTOs =  books.Select(book => new GetBookDTO  
+            //var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
+            var bookDTOs = new List<GetBookDTO>();
+
+            var result = new PagedResult<GetBookDTO>
             {
-                Id = book.Id,
-                Title = book.Title,
-                Description = book.Description,
-                Price = book.Price,
-                Stock = book.Stock,
-                AuthorName = book.Author != null ? book.Author.FullName : string.Empty
-            }).ToList();
+                Items = bookDTOs,
+                TotalCount = totalCount,
+                CurrentPage = paginationParameters.PageNumber,
+                PageSize = paginationParameters.PageSize
+            };
 
-            return new SuccessDataResult<List<GetBookDTO>>( HttpStatusCode.OK, bookDTOs);
+            return new SuccessDataResult<List<GetBookDTO>>(HttpStatusCode.OK);
         }
 
         public async Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id)
@@ -103,5 +104,8 @@ namespace Business.Concrete
             await _bookDAL.UpdateAsync(book);
             return new SuccessResult(HttpStatusCode.NoContent, "Book updated successfully.");
         }
+
+        
+       
     }
 }

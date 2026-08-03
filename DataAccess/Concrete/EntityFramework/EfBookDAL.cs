@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             _context = context;
         }
-        public async  Task<List<Book>> GetAllAsync(PaginationParameters pagination)
+        public async Task<(List<Book> Books, int TotalCount)> GetAllAsync(PaginationParameters pagination)
         {
             IQueryable<Book> query = _context.Books.Include(x => x.Author);
 
@@ -31,20 +31,22 @@ namespace DataAccess.Concrete.EntityFramework
                             ? query.OrderByDescending(x => x.Title)
                             : query.OrderBy(x => x.Title);
                         break;
-
                     case "price":
                         query = pagination.IsDescending
                             ? query.OrderByDescending(x => x.Price)
                             : query.OrderBy(x => x.Price);
                         break;
                 }
-
             }
 
-            return await query
-            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
-            .Take(pagination.PageSize)
-            .ToListAsync();
+            var totalCount = await query.CountAsync();
+
+            var books = await query
+                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
+            return (books, totalCount);
         }
     }
 }
