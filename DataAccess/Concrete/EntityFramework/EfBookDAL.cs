@@ -11,11 +11,16 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfBookDAL : EfRepositorybase<Book, AppDbContext>, IBookDAL
     {
+
+        private readonly AppDbContext _context;
+
+        public EfBookDAL(AppDbContext context)
+        {
+            _context = context;
+        }
         public async  Task<List<Book>> GetAllAsync(PaginationParameters pagination)
         {
-            using AppDbContext context = new();
-
-            IQueryable<Book> query = context.Books;
+            IQueryable<Book> query = _context.Books.Include(x => x.Author);
 
             if (!string.IsNullOrWhiteSpace(pagination.SortBy))
             {

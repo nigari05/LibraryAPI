@@ -19,35 +19,35 @@ namespace WebAPI.Controllers
             _bookService = bookService;
         }
 
-        [HttpGet("getallbooks")]
+        [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetAllBooks([FromQuery]PaginationParameters pagination)
         {
             var result = await _bookService.GetAllBooksAsync(pagination);
             return StatusCode((int)result.StatusCode, result);
         }
-        [HttpGet("getbookbyid/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetBookById(Guid id)
         {
             var result = await _bookService.GetByIdAsync(id);
            
             return StatusCode((int)result.StatusCode, result);
         }
-        [HttpPost("addbook")]
+        [HttpPost]
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> CreateBook(CreateBookDTO entity)
         {
             var result = await _bookService.AddAsync(entity);
             return StatusCode((int)result.StatusCode, result);
         }
-        [HttpPut("updatebook/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook(Guid id, UpdateBookDTO entity)
         {
             var result = await _bookService.UpdateAsync(id, entity);
             return StatusCode((int)result.StatusCode, result);
         }
 
-        [HttpDelete("deletebook/{id}")]
+        [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> DeleteBook(Guid id)
