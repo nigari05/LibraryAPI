@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
@@ -16,23 +17,17 @@ namespace Business.Concrete
     public class BookManager : IBookService
     {
         private readonly IBookDAL _bookDAL;
+        private readonly  IMapper _mapper;
 
-        public BookManager(IBookDAL bookDAL)
+        public BookManager(IBookDAL bookDAL, IMapper mapper)
         {
             _bookDAL = bookDAL;
+            _mapper = mapper;
         }
 
         public async Task<IResult> AddAsync(CreateBookDTO entity)
         {
-            var book = new Book
-            {
-                Title = entity.Title,
-                Description = entity.Description,
-                Price = entity.Price,
-                Stock = entity.Stock,
-                AuthorId = entity.AuthorId
-            };
-
+            var book = _mapper.Map<Book>(entity);
             await _bookDAL.AddAsync(book);
             return new SuccessResult(HttpStatusCode.Created, "Book added successfully.");
         }
@@ -54,8 +49,8 @@ namespace Business.Concrete
         {
             var (books, totalCount) = await _bookDAL.GetAllAsync(paginationParameters);
 
-            //var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
-            var bookDTOs = new List<GetBookDTO>();
+            var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
+            
 
             var result = new PagedResult<GetBookDTO>
             {
@@ -95,11 +90,7 @@ namespace Business.Concrete
             if (book == null)
                 throw new KeyNotFoundException("Book not found.");
 
-            book.Title = entity.Title;
-            book.Description = entity.Description;
-            book.Price = entity.Price;
-            book.Stock = entity.Stock;
-            book.AuthorId = entity.AuthorId;
+            _mapper.Map(entity, book);
 
             await _bookDAL.UpdateAsync(book);
             return new SuccessResult(HttpStatusCode.NoContent, "Book updated successfully.");

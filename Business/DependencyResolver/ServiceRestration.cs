@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Mapping;
 using Business.Validation.AuthorValidators;
 using Business.Validation.BookValidators;
 using Business.Validation.MemberValidators;
@@ -34,6 +35,7 @@ namespace Business.DependencyResolver
             services.AddScoped<IJWTService, JWTManager>();
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
+            services.AddAutoMapper(cfg => { }, typeof(BookProfile).Assembly);
         }
     }
 }

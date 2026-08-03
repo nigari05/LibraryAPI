@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
@@ -7,6 +8,7 @@ using DataAccess.Absract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.AuthorDTOS;
+using Entities.DTOs.BookDTOs;
 using Entities.DTOs.UserDTOs;
 using Org.BouncyCastle.Crypto.Generators;
 using System;
@@ -19,7 +21,7 @@ namespace Business.Concrete
     public class AuthorManager : IAuthorService
     {
         private readonly IAuthorDAL _authorDAL;
-      
+        private readonly IMapper _mapper;
 
         public AuthorManager(IAuthorDAL authorDAL)
         {
@@ -28,11 +30,8 @@ namespace Business.Concrete
 
         public async Task<IResult> AddAsync(CreateAuthorDTO entity)
         {
-            var author = new Author
-            {
-                FullName = entity.FullName,
-                Biography = entity.Biography
-            };
+            var author = _mapper.Map<Author>(entity);
+
 
             await _authorDAL.AddAsync(author);
             return new SuccessResult(HttpStatusCode.Created, "Author created successfully.");
@@ -53,14 +52,11 @@ namespace Business.Concrete
         public async Task<IDataResult<List<GetAuthorDTO>>> GetAllAsync(PaginationParameters pagination)
         {
             var authors = await _authorDAL.GetAllAsync(pagination);
+            var authorDTOs = _mapper.Map<List<GetAuthorDTO>>(authors);
 
-            List<GetAuthorDTO> models = authors.Select(author => new GetAuthorDTO
-            {
-                Id = author.Id,
-                FullName = author.FullName,
-                Biography = author.Biography
-            }).ToList();
-            return new SuccessDataResult<List<GetAuthorDTO>>(HttpStatusCode.OK, models);
+
+           
+            return new SuccessDataResult<List<GetAuthorDTO>>(HttpStatusCode.OK, authorDTOs);
 
         }
 
@@ -93,8 +89,8 @@ namespace Business.Concrete
                 throw new KeyNotFoundException("Book not found.");
 
 
-            author.FullName = entity.FullName;
-            author.Biography = entity.Biography;
+            _mapper.Map(entity, author);
+
 
             await _authorDAL.UpdateAsync(author);
             return new SuccessResult(HttpStatusCode.NoContent, "Author updated successfully.");
