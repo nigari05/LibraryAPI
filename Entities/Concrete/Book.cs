@@ -14,5 +14,6 @@ namespace Entities.Concrete
 
         public Guid AuthorId { get; set; }
         public Author? Author { get; set; }
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
     }
 }

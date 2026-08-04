@@ -20,6 +20,11 @@ namespace DataAccess.Configurations
 
             builder.Property(x => x.Price)
                 .HasColumnType("decimal(18,2)");
+
+            builder.HasOne(x => x.Author)
+            .WithMany(x => x.Books)
+            .HasForeignKey(x => x.AuthorId)
+            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
