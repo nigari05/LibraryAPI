@@ -36,6 +36,8 @@ namespace Business.DependencyResolver
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
             services.AddAutoMapper(cfg => { }, typeof(BookProfile).Assembly);
+            services.AddScoped<ICategoryDAL, EfCategoryDAL>();
+            services.AddScoped<ICategoryService, CategoryManager>();
         }
     }
 }
