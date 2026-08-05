@@ -10,7 +10,17 @@ namespace DataAccess.Absract
 {
     public interface IBookDAL : IRepositorybase<Book>
     {
-        Task<(List<Book> Books, int TotalCount)> GetAllAsync(PaginationParameters pagination);
+        /// <summary>
+        /// Dinamik LINQ filtrasiyası (derived query method məntiqi) ilə səhifələnmiş
+        /// kitab siyahısını qaytarır.
+        /// </summary>
+        Task<(List<Book> Books, int TotalCount)> GetAllAsync(BookFilterParameters filter);
+
+        /// <summary>
+        /// Native (raw) SQL sorğusu ilə açar söz, qiymət aralığı və kateqoriyaya görə
+        /// kitabları axtarır. Author və BookCategories cədvəlləri ilə JOIN edilir.
+        /// </summary>
+        Task<List<Book>> SearchBooksNativeAsync(string? keyword, decimal? minPrice, decimal? maxPrice, Guid? categoryId);
 
 
     }
