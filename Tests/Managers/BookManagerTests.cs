@@ -179,6 +179,40 @@ namespace Tests.Managers
 
             _bookDalMock.Verify(x => x.GetAllAsync(filter), Times.Once);
         }
+
+        [Fact]
+        public async Task FilterBooksAsync_Should_Return_Paged_Result_Using_Specification()
+        {
+            var filter = new BookFilterParameters
+            {
+                PageNumber = 1,
+                PageSize = 10,
+                AuthorName = "Martin",
+                InStockOnly = true
+            };
+
+            var books = new List<Book>
+                {
+                    new Book { Id = Guid.NewGuid(), Title = "Clean Architecture", Price = 60, Stock = 2 }
+                };
+
+            _bookDalMock
+                .Setup(x => x.GetBySpecificationAsync(It.IsAny<Core.Specification.ISpecification<Book>>()))
+                .ReturnsAsync((books, 1));
+
+            var result = await _bookManager.FilterBooksAsync(filter);
+
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            Assert.Single(result.Data!.Items);
+            Assert.Equal(1, result.Data.TotalCount);
+            Assert.Equal("Clean Architecture", result.Data.Items[0].Title);
+
+            _bookDalMock.Verify(
+                x => x.GetBySpecificationAsync(It.IsAny<Core.Specification.ISpecification<Book>>()),
+                Times.Once);
+        }
+
         [Fact]
         public async Task SearchBooksNativeAsync_Should_Return_Books_From_Native_Query()
         {
