@@ -125,5 +125,22 @@ namespace WebAPI.Controllers
             var result = await _bookService.DeleteAsync(id);
             return StatusCode((int)result.StatusCode, result);
         }
+
+
+        /// <summary>
+        /// Specification pattern (BookFilterSpecification) əsasında dinamik axtarış/filtrasiya
+        /// aparır. Checkpoint 2-dəki endpoint-dən fərqli olaraq, filtr məntiqi birbaşa DAL-da
+        /// deyil, ayrıca, yenidən istifadə oluna bilən Specification obyektində təsvir olunur.
+        /// </summary>
+        /// <param name="filter">Səhifələnmə, sıralama və filtr parametrləri (Title, AuthorName, CategoryId, MinPrice, MaxPrice, InStockOnly).</param>
+        /// <response code="200">Filtrlənmiş kitab siyahısı uğurla qaytarıldı.</response>
+        [HttpGet("filter")]
+        [Authorize]
+        [ProducesResponseType(typeof(IDataResult<PagedResult<GetBookDTO>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> FilterBooks([FromQuery] BookFilterParameters filter)
+        {
+            var result = await _bookService.FilterBooksAsync(filter);
+            return StatusCode((int)result.StatusCode, result);
+        }
     }
 }
