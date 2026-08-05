@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.DataAccess.Entities;
+using Core.Specification;
 using Core.Utilities.Pagination;
 using Entities.Concrete;
 using System;
@@ -21,6 +22,13 @@ namespace DataAccess.Absract
         /// kitabları axtarır. Author və BookCategories cədvəlləri ilə JOIN edilir.
         /// </summary>
         Task<List<Book>> SearchBooksNativeAsync(string? keyword, decimal? minPrice, decimal? maxPrice, Guid? categoryId);
+
+        /// <summary>
+        /// Specification pattern əsasında (ISpecification&lt;Book&gt;) dinamik axtarış/filtrasiya
+        /// aparır. Filtr məntiqi çağıran koddan tam ayrılmış, yenidən istifadə oluna bilən
+        /// Specification obyektində təsvir olunur.
+        /// </summary>
+        Task<(List<Book> Books, int TotalCount)> GetBySpecificationAsync(ISpecification<Book> specification);
 
 
     }

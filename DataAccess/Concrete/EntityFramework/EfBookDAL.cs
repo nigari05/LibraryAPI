@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Specification;
 using Core.Utilities.Pagination;
 using DataAccess.Absract;
 using Entities.Concrete;
@@ -83,6 +84,25 @@ namespace DataAccess.Concrete.EntityFramework
             var books = await query
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return (books, totalCount);
+        }
+
+        /// <summary>
+        /// Specification-u (Criteria + Includes + sıralama + səhifələnmə) IQueryable üzərinə
+        /// tətbiq edir. Ümumi say (TotalCount) səhifələnmədən əvvəlki sorğu üzərindən,
+        /// nəticə isə səhifələnmiş sorğu üzərindən alınır.
+        /// </summary>
+        public async Task<(List<Book> Books, int TotalCount)> GetBySpecificationAsync(ISpecification<Book> specification)
+        {
+            var totalCount = await SpecificationEvaluator<Book>
+               .GetQuery(_context.Books.AsQueryable(), specification, applyPaging: false)
+               .CountAsync();
+
+            var books = await SpecificationEvaluator<Book>
+                .GetQuery(_context.Books.AsQueryable(), specification, applyPaging: true)
                 .AsNoTracking()
                 .ToListAsync();
 
