@@ -17,5 +17,7 @@ namespace Entities.DTOs.BookDTOs
         public int Stock { get; set; }
 
         public string? AuthorName { get; set; }
+        public List<string> CategoryNames { get; set; } = new();
+
     }
 }

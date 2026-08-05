@@ -77,7 +77,8 @@ namespace Business.Concrete
                 Description = book.Description,
                 Price = book.Price,
                 Stock = book.Stock,
-                AuthorName = book.Author != null ? book.Author.FullName : string.Empty
+                AuthorName = book.Author != null ? book.Author.FullName : string.Empty,
+                CategoryNames = book.Categories?.Select(c => c.Name).ToList() ?? new List<string>()
             };
             return new SuccessDataResult<GetBookDTO?>(HttpStatusCode.OK, module);
         }
