@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Specification
+namespace Core.Specification
 {
     /// <summary>
     /// ISpecification üçün baza implementasiya. Törəyən siniflər AddCriteria(...) metodunu

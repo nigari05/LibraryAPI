@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Specification
+namespace Core.Specification
 {
     /// <summary>
     /// Verilmiş ISpecification-u bir IQueryable üzərinə tətbiq edir: Criteria (Where),
