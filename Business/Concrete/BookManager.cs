@@ -82,6 +82,15 @@ namespace Business.Concrete
             return new SuccessDataResult<GetBookDTO?>(HttpStatusCode.OK, module);
         }
 
+        public async Task<IDataResult<List<GetBookDTO>>> SearchBooksNativeAsync(string? keyword, decimal? minPrice, decimal? maxPrice, Guid? categoryId)
+        {
+            var books = await _bookDAL.SearchBooksNativeAsync(keyword, minPrice, maxPrice, categoryId);
+
+            var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
+
+            return new SuccessDataResult<List<GetBookDTO>>(HttpStatusCode.OK, bookDTOs);
+        }
+
         public async Task<IResult> UpdateAsync(Guid id, UpdateBookDTO entity)
         {
             var book = await _bookDAL.GetByIdAsync(id);

@@ -10,7 +10,8 @@ namespace Business.Abstract
     public interface IBookService
     {
         Task<IDataResult<PagedResult<GetBookDTO>>> GetAllBooksAsync(BookFilterParameters filterParameters);
-        Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id);
+        Task<IDataResult<List<GetBookDTO>>> SearchBooksNativeAsync(string? keyword, decimal? minPrice, decimal? maxPrice, Guid? categoryId);
+         Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id);
 
         Task<IResult> AddAsync(CreateBookDTO entity);
 

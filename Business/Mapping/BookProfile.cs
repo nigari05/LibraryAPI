@@ -15,7 +15,10 @@ namespace Business.Mapping
             CreateMap<UpdateBookDTO, Book>();
             CreateMap<Book, GetBookDTO>()
                 .ForMember(dest => dest.AuthorName,
-                    opt => opt.MapFrom(src => src.Author != null ? src.Author.FullName : string.Empty));
+                    opt => opt.MapFrom(src => src.Author != null ? src.Author.FullName : string.Empty))
+                .ForMember(dest => dest.CategoryNames,
+                    opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)));
+
         }
     }
 }
