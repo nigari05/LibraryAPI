@@ -5,6 +5,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
 using Core.Utilities.Results.Concrete.SuccessResults;
 using DataAccess.Absract;
+using DataAccess.Specification;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
 using System;
@@ -43,7 +44,24 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Book deleted successfully.");
         }
 
+        public async Task<IDataResult<PagedResult<GetBookDTO>>> FilterBooksAsync(BookFilterParameters filterParameters)
+        {
+            var specification = new BookFilterSpecification(filterParameters);
 
+            var (books, totalCount) = await _bookDAL.GetBySpecificationAsync(specification);
+
+            var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
+
+            var result = new PagedResult<GetBookDTO>
+            {
+                Items = bookDTOs,
+                TotalCount = totalCount,
+                CurrentPage = filterParameters.PageNumber,
+                PageSize = filterParameters.PageSize
+            };
+
+            return new SuccessDataResult<PagedResult<GetBookDTO>>(HttpStatusCode.OK, result);
+        }
 
         public async Task<IDataResult<PagedResult<GetBookDTO>>> GetAllBooksAsync(BookFilterParameters filterParameters)
         {
