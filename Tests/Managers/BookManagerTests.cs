@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Concrete;
 using Business.Mapping;
+using Core.Utilities.Pagination;
 using DataAccess.Absract;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
@@ -120,8 +121,6 @@ namespace Tests.Managers
             Assert.Equal(dto.Title, book.Title);
             Assert.Equal(dto.Price, book.Price);
         }
-
-
         [Fact]
         public async Task GetByIdAsync_Should_Throw_When_Book_Not_Found()
         {
@@ -134,7 +133,6 @@ namespace Tests.Managers
             await Assert.ThrowsAsync<KeyNotFoundException>(
                 () => _bookManager.GetByIdAsync(id));
         }
-
         [Fact]
         public async Task DeleteAsync_Should_Throw_When_Book_Not_Found()
         {
@@ -149,7 +147,59 @@ namespace Tests.Managers
 
             _bookDalMock.Verify(x => x.DeleteAsync(It.IsAny<Book>()), Times.Never);
         }
+        [Fact]
+        public async Task GetAllBooksAsync_Should_Return_Filtered_Paged_Result()
+        {
+            var filter = new BookFilterParameters
+            {
+                PageNumber = 1,
+                PageSize = 10,
+                Title = "Clean",
+                MinPrice = 10,
+                MaxPrice = 100,
+                InStockOnly = true
+            };
 
+            var books = new List<Book>
+            {
+                new Book { Id = Guid.NewGuid(), Title = "Clean Code", Price = 45, Stock = 5 }
+            };
+
+            _bookDalMock
+                .Setup(x => x.GetAllAsync(filter))
+                .ReturnsAsync((books, 1));
+
+            var result = await _bookManager.GetAllBooksAsync(filter);
+
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            Assert.Single(result.Data!.Items);
+            Assert.Equal(1, result.Data.TotalCount);
+            Assert.Equal("Clean Code", result.Data.Items[0].Title);
+
+            _bookDalMock.Verify(x => x.GetAllAsync(filter), Times.Once);
+        }
+        [Fact]
+        public async Task SearchBooksNativeAsync_Should_Return_Books_From_Native_Query()
+        {
+            var books = new List<Book>
+            {
+                new Book { Id = Guid.NewGuid(), Title = "ASP.NET Core", Price = 50, Stock = 3 }
+            };
+
+            _bookDalMock
+                .Setup(x => x.SearchBooksNativeAsync("asp", null, null, null))
+                .ReturnsAsync(books);
+
+            var result = await _bookManager.SearchBooksNativeAsync("asp", null, null, null);
+
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            Assert.Single(result.Data!);
+            Assert.Equal("ASP.NET Core", result.Data![0].Title);
+
+            _bookDalMock.Verify(x => x.SearchBooksNativeAsync("asp", null, null, null), Times.Once);
+        }
         [Fact]
         public async Task UpdateAsync_Should_Throw_When_Book_Not_Found()
         {
@@ -173,5 +223,6 @@ namespace Tests.Managers
 
             _bookDalMock.Verify(x => x.UpdateAsync(It.IsAny<Book>()), Times.Never);
         }
+
     }
 }
