@@ -29,11 +29,34 @@ namespace WebAPI.Controllers
         [Authorize]
         [ProducesResponseType(typeof(IDataResult<PagedResult<GetBookDTO>>), StatusCodes.Status200OK)]
 
-        public async Task<IActionResult> GetAllBooks([FromQuery]PaginationParameters pagination)
+        public async Task<IActionResult> GetAllBooks([FromQuery] BookFilterParameters filterParameters)
         {
-            var result = await _bookService.GetAllBooksAsync(pagination);
+            var result = await _bookService.GetAllBooksAsync(filterParameters);
             return StatusCode((int)result.StatusCode, result);
         }
+        /// <summary>
+        /// Açar söz (başlıq/müəllif üzrə), qiymət aralığı və kateqoriyaya görə native
+        /// (raw) SQL sorğusu ilə axtarış aparır. Books, Authors və BookCategories
+        /// cədvəlləri birbaşa JOIN edilir.
+        /// </summary>
+        /// <param name="keyword">Başlıq və ya müəllif adında axtarılacaq açar söz (opsional).</param>
+        /// <param name="minPrice">Minimum qiymət (opsional).</param>
+        /// <param name="maxPrice">Maksimum qiymət (opsional).</param>
+        /// <param name="categoryId">Kateqoriya ID-si (opsional).</param>
+        /// <response code="200">Axtarış nəticələri uğurla qaytarıldı.</response>
+        [HttpGet("search")]
+        [Authorize]
+        [ProducesResponseType(typeof(IDataResult<List<GetBookDTO>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> SearchBooksNative(
+            [FromQuery] string? keyword,
+            [FromQuery] decimal? minPrice,
+            [FromQuery] decimal? maxPrice,
+            [FromQuery] Guid? categoryId)
+        {
+            var result = await _bookService.SearchBooksNativeAsync(keyword, minPrice, maxPrice, categoryId);
+            return StatusCode((int)result.StatusCode, result);
+        }
+
         /// <summary>
         /// ID-yə görə tək bir kitabı qaytarır.
         /// </summary>
