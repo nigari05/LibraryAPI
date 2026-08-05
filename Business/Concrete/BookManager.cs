@@ -45,22 +45,21 @@ namespace Business.Concrete
 
 
 
-        public async Task<IDataResult<List<GetBookDTO>>> GetAllBooksAsync(PaginationParameters paginationParameters)
+        public async Task<IDataResult<PagedResult<GetBookDTO>>> GetAllBooksAsync(BookFilterParameters filterParameters)
         {
-            var (books, totalCount) = await _bookDAL.GetAllAsync(paginationParameters);
+            var (books, totalCount) = await _bookDAL.GetAllAsync(filterParameters);
 
             var bookDTOs = _mapper.Map<List<GetBookDTO>>(books);
-            
 
             var result = new PagedResult<GetBookDTO>
             {
                 Items = bookDTOs,
                 TotalCount = totalCount,
-                CurrentPage = paginationParameters.PageNumber,
-                PageSize = paginationParameters.PageSize
+                CurrentPage = filterParameters.PageNumber,
+                PageSize = filterParameters.PageSize
             };
 
-            return new SuccessDataResult<List<GetBookDTO>>(HttpStatusCode.OK);
+            return new SuccessDataResult<PagedResult<GetBookDTO>>(HttpStatusCode.OK, result);
         }
 
         public async Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id)
