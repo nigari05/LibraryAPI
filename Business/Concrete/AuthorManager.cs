@@ -60,6 +60,27 @@ namespace Business.Concrete
 
         }
 
+        /// <summary>
+        /// N+1-siz variant: IAuthorDAL.GetAllWithBooksAsync artıq TƏK sorğu ilə Books
+        /// əlaqəsini yükləyib gətirdiyi üçün, burada əlavə heç bir DB sorğusuna ehtiyac
+        /// yoxdur - sadəcə yaddaşdakı Books kolleksiyası DTO-ya map olunur.
+        /// </summary>
+        public async Task<IDataResult<List<GetAuthorWithBooksDTO>>> GetAllWithBooksAsync(PaginationParameters pagination)
+        {
+            var authors = await _authorDAL.GetAllWithBooksAsync(pagination);
+
+            var authorDTOs = authors.Select(a => new GetAuthorWithBooksDTO
+            {
+                Id = a.Id,
+                FullName = a.FullName,
+                Biography = a.Biography,
+                BookCount = a.Books?.Count ?? 0,
+                BookTitles = a.Books?.Select(b => b.Title).ToList() ?? new List<string>()
+            }).ToList();
+
+            return new SuccessDataResult<List<GetAuthorWithBooksDTO>>(HttpStatusCode.OK, authorDTOs);
+        }
+
         public async Task<IDataResult<GetAuthorDTO>?> GetByIdAsync(Guid id)
         { 
             var author = await _authorDAL.GetByIdAsync(id);

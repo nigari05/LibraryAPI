@@ -109,6 +109,20 @@ namespace WebAPI.Controllers
             return StatusCode((int)result.StatusCode, result);
         }
 
-       
+        /// <summary>
+        /// Bütün müəllifləri, kitabları ilə BİRLİKDƏ, TƏK sorğu ilə (Include - N+1 sorğu
+        /// problemi olmadan) qaytarır.
+        /// </summary>
+        /// <param name="pagination">Səhifə nömrəsi, ölçüsü və sıralama parametrləri.</param>
+        /// <response code="200">Müəllif + kitab siyahısı uğurla qaytarıldı.</response>
+        [HttpGet("with-books")]
+        [Authorize]
+        [ProducesResponseType(typeof(IDataResult<List<GetAuthorWithBooksDTO>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllAuthorsWithBooks([FromQuery] PaginationParameters pagination)
+        {
+            var result = await _authorService.GetAllWithBooksAsync(pagination);
+            return StatusCode((int)result.StatusCode, result);
+        }
+
     }
 }
