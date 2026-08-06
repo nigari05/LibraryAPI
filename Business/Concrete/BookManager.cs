@@ -9,6 +9,7 @@ using DataAccess.Concrete.EntityFramework;
 using DataAccess.Specification;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -31,9 +32,32 @@ namespace Business.Concrete
 
         public async Task<IResult> AddAsync(CreateBookDTO entity)
         {
-            var book = _mapper.Map<Book>(entity);
-            await _bookDAL.AddAsync(book);
-            return new SuccessResult(HttpStatusCode.Created, "Book added successfully.");
+            await using var transaction =await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var book = _mapper.Map<Book>(entity);
+
+                var categories = await _context.Categories
+                    .Where(c => entity.CategoryIds.Contains(c.Id))
+                    .ToListAsync();
+
+                foreach (var category in categories)
+                {
+                    book.Categories.Add(category);
+                }
+
+                await _bookDAL.AddAsync(book);
+
+                await transaction.CommitAsync();
+
+                return new SuccessResult( HttpStatusCode.Created,"Book added successfully.");
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
 
         public async Task<IResult> DeleteAsync(Guid id)
