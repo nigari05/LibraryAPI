@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Member> Members { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BookLoan> BookLoans { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
