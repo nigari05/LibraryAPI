@@ -38,6 +38,8 @@ namespace Business.DependencyResolver
             services.AddAutoMapper(cfg => { }, typeof(BookProfile).Assembly);
             services.AddScoped<ICategoryDAL, EfCategoryDAL>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IBookLoanDAL, EfBookLoanDAL>();
+            services.AddScoped<IBookLoanService, BookLoanManager>();
         }
     }
 }
