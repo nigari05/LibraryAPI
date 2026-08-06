@@ -11,6 +11,16 @@ namespace DataAccess.Concrete.EntityFramework
     public class AppDbContext : DbContext
     {
 
+        // Parametrsiz constructor - mövcud "new TContext()" əsaslı EfRepositorybase
+        // (bax: Core/DataAccess/EntityFramework/EfRepositorybase.cs) üçün saxlanılır.
+     
+        public AppDbContext() { }
+
+        // DbContextOptions qəbul edən constructor - DI vasitəsilə real SQL Server
+        // qoşulması ilə, və ya unit testlərdə SQLite in-memory kimi fərqli provider-lərlə
+        // işə salına bilsin deyə əlavə olunub (bax: Tests/Managers/BookLoanTransactionTests.cs).
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=LibraryDb;Trusted_Connection=true; trustServerCertificate=true;");
