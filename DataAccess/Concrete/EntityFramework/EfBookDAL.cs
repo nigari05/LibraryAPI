@@ -91,6 +91,19 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
         /// <summary>
+        /// Bax: IBookDAL.GetByIdWithDetailsAsync. Author və Categories eyni sorğuda
+        /// (Include) yüklənir - beləliklə DTO qurularkən əlavə sorğuya ehtiyac qalmır.
+        /// </summary>
+        public async Task<Book?> GetByIdWithDetailsAsync(Guid id)
+        {
+            return await _context.Books
+                .Include(b => b.Author)
+                .Include(b => b.Categories)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(b => b.Id == id);
+        }
+
+        /// <summary>
         /// Specification-u (Criteria + Includes + sıralama + səhifələnmə) IQueryable üzərinə
         /// tətbiq edir. Ümumi say (TotalCount) səhifələnmədən əvvəlki sorğu üzərindən,
         /// nəticə isə səhifələnmiş sorğu üzərindən alınır.

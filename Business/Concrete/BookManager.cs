@@ -82,13 +82,17 @@ namespace Business.Concrete
 
         public async Task<IDataResult<GetBookDTO?>> GetByIdAsync(Guid id)
         {
-            var book = await _bookDAL.GetByIdAsync(id);
+            
+            // N+1 fix: əvvəllər _bookDAL.GetByIdAsync (generic FindAsync) Author/Categories
+            // əlaqələrini yükləmirdi - AuthorName həmişə boş qalırdı. İndi Include ilə TƏK
+            // sorğuda hamısı gətirilir.
+            var book = await _bookDAL.GetByIdWithDetailsAsync(id);
 
             if (book == null)
                 throw new KeyNotFoundException("Book not found.");
 
 
-            GetBookDTO module=  new()
+            GetBookDTO module = new()
             {
                 Id = book.Id,
                 Title = book.Title,

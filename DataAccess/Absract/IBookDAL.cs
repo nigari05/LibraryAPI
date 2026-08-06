@@ -29,7 +29,12 @@ namespace DataAccess.Absract
         /// Specification obyektində təsvir olunur.
         /// </summary>
         Task<(List<Book> Books, int TotalCount)> GetBySpecificationAsync(ISpecification<Book> specification);
-
+        /// <summary>
+        /// N+1 sorğu probleminin qarşısını almaq üçün: IRepositorybase.GetByIdAsync
+        /// (FindAsync) Author/Categories əlaqələrini YÜKLƏMİR - hər ikisinə ayrıca
+        /// müraciət lazım olardı. Bu metod .Include ilə HAMISINI TƏK sorğuda gətirir.
+        /// </summary>
+        Task<Book?> GetByIdWithDetailsAsync(Guid id);
 
     }
 }
