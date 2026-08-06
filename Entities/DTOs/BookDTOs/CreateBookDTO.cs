@@ -15,6 +15,5 @@ namespace Entities.DTOs.BookDTOs
         public int Stock { get; set; }
 
         public Guid AuthorId { get; set; }
-        public List<Guid> CategoryIds { get; set; } = new();
     }
 }

@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         private readonly AppDbContext _context;
 
-        public EfBookDAL(AppDbContext context) : base(context) 
+        public EfBookDAL(AppDbContext context)
         {
             _context = context;
         }

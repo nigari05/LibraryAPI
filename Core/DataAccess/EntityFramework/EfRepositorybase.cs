@@ -11,24 +11,21 @@ namespace Core.DataAccess.EntityFramework
          where TEntity : class, IEntity
          where TContext : DbContext, new()
     {
-
-        protected readonly TContext _context;
-
-        public EfRepositorybase(TContext context)
-        {
-            _context = context;
-        }
         public async Task AddAsync(TEntity entity)
         {
-            await _context.Set<TEntity>().AddAsync(entity);
-            await _context.SaveChangesAsync();
+            using TContext context = new();
+            var addedEntity = context.Entry(entity);
+            addedEntity.State = EntityState.Added;
+            await context.SaveChangesAsync();
 
         }
 
         public async Task DeleteAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
+            using TContext context = new();
+            var deletedEntity = context.Entry(entity);
+            deletedEntity.State = EntityState.Deleted;
+            await context.SaveChangesAsync();
         }
         public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? expression = null, bool tracking = true)
         {
@@ -46,19 +43,19 @@ namespace Core.DataAccess.EntityFramework
 
         public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>>? expression = null, bool tracking = true)
         {
-            
+            using TContext context = new();
             if (tracking)
             {
                 if (expression == null)
-                    return await _context.Set<TEntity>().FirstOrDefaultAsync();
+                    return await context.Set<TEntity>().FirstOrDefaultAsync();
 
-                return await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
+                return await context.Set<TEntity>().FirstOrDefaultAsync(expression);
             }
 
             if (expression == null)
-                return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync();
+                return await context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync();
 
-            return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(expression);
+            return await context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(expression);
         }
         public async Task<TEntity?> GetByIdAsync(Guid id)
         {
@@ -68,8 +65,10 @@ namespace Core.DataAccess.EntityFramework
 
         public async Task UpdateAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Update(entity);
-            await _context.SaveChangesAsync();
+            using TContext context = new();
+            var updatedEntity = context.Entry(entity);
+            updatedEntity.State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
     }
 }
