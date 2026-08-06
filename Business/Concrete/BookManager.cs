@@ -5,6 +5,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
 using Core.Utilities.Results.Concrete.SuccessResults;
 using DataAccess.Absract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Specification;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
@@ -19,11 +20,13 @@ namespace Business.Concrete
     {
         private readonly IBookDAL _bookDAL;
         private readonly  IMapper _mapper;
+        private readonly AppDbContext _context;
 
-        public BookManager(IBookDAL bookDAL, IMapper mapper)
+        public BookManager(IBookDAL bookDAL, IMapper mapper, AppDbContext context)
         {
             _bookDAL = bookDAL;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<IResult> AddAsync(CreateBookDTO entity)
