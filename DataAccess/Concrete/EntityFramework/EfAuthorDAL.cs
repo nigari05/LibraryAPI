@@ -34,5 +34,33 @@ namespace DataAccess.Concrete.EntityFramework
                 .Take(pagination.PageSize)
                 .ToListAsync();
         }
+
+        /// <summary>
+        /// Bax: IAuthorDAL.GetAllWithBooksAsync. .Include(a =&gt; a.Books) sayəsində EF Core
+        /// bunu TƏK bir SQL sorğusu (JOIN) kimi generasiya edir - N+1 problemi olmadan.
+        /// </summary>
+        public async Task<List<Author>> GetAllWithBooksAsync(PaginationParameters pagination)
+        {
+            using AppDbContext context = new();
+
+            IQueryable<Author> query = context.Authors.Include(a => a.Books);
+
+            if (!string.IsNullOrWhiteSpace(pagination.SortBy) && pagination.SortBy.ToLower() == "fullname")
+            {
+                query = pagination.IsDescending
+                    ? query.OrderByDescending(x => x.FullName)
+                    : query.OrderBy(x => x.FullName);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.FullName);
+            }
+
+            return await query
+                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
     }
 }
