@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Abstract;
+using Core.Utilities.Caching;
 using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.SuccessResults;
@@ -19,10 +20,17 @@ namespace Business.Concrete
     {
         private readonly ICategoryDAL _categoryDAL;
         private readonly IMapper _mapper;
-        public CategoryManager(ICategoryDAL categoryDAL, IMapper mapper)
+        private readonly ICacheService _cacheService;
+
+        // Bütün "categories:all:..." açarları bu prefiksdən başlayır - yazı əməliyyatı
+        // (Add/Update/Delete) olduqda hamısı bir dəfəyə invalidasiya olunur.
+        private const string CacheKeyPrefix = "categories:all:";
+        private static readonly TimeSpan CacheDuration = TimeSpan.FromMinutes(10);
+        public CategoryManager(ICategoryDAL categoryDAL, IMapper mapper, ICacheService cacheService)
         {
             _categoryDAL = categoryDAL;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
 
         public async Task<IResult> AddAsync(CreateCategoryDTO entity)
@@ -30,6 +38,7 @@ namespace Business.Concrete
             var category = _mapper.Map<Category>(entity);
 
             await _categoryDAL.AddAsync(category);
+            _cacheService.RemoveByPrefix(CacheKeyPrefix);
             return new SuccessResult(HttpStatusCode.Created, "Category added successfully.");
         }
 
@@ -41,17 +50,28 @@ namespace Business.Concrete
                 throw new KeyNotFoundException("Category not found.");
 
             await _categoryDAL.DeleteAsync(category);
+            _cacheService.RemoveByPrefix(CacheKeyPrefix);
             return new SuccessResult(HttpStatusCode.NoContent, "Category deleted successfully.");
 
         }
 
-        
+        /// <summary>
+        /// Kateqoriya siyahısı çox nadir dəyişən, tez-tez oxunan (read-heavy) məlumatdır -
+        /// buna görə klassik keşləmə namizədidir. Nəticə səhifələnmə/sıralama
+        /// parametrlərinə görə fərqli açarlarla keşlənir; AddAsync/UpdateAsync/DeleteAsync
+        /// çağırıldıqda bütün "categories:all:*" açarları invalidasiya olunur ki, köhnəlmiş
+        /// (stale) məlumat qaytarılmasın.
+        /// </summary>
 
         public async Task<IDataResult<List<GetCategoryDTO>>> GetAllCategoriesAsync(PaginationParameters pagination)
         {
-            var categories = await _categoryDAL.GetAllAsync(pagination);
+            var cacheKey = $"{CacheKeyPrefix}{pagination.PageNumber}:{pagination.PageSize}:{pagination.SortBy}:{pagination.IsDescending}";
 
-            var categoryDTOs = _mapper.Map<List<GetCategoryDTO>>(categories);
+            var categoryDTOs = await _cacheService.GetOrCreateAsync(cacheKey, async () =>
+            {
+                var categories = await _categoryDAL.GetAllAsync(pagination);
+                return _mapper.Map<List<GetCategoryDTO>>(categories);
+            }, CacheDuration);
 
             return new SuccessDataResult<List<GetCategoryDTO>>(HttpStatusCode.OK, categoryDTOs);
 
@@ -80,6 +100,7 @@ namespace Business.Concrete
             _mapper.Map(entity, category);
 
             await _categoryDAL.UpdateAsync(category);
+            _cacheService.RemoveByPrefix(CacheKeyPrefix);
             return new SuccessResult(HttpStatusCode.NoContent, "Category updated successfully.");
         
          }
