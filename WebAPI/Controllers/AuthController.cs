@@ -8,7 +8,6 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
 
     public class AuthController : ControllerBase
     {
@@ -27,6 +26,7 @@ namespace WebAPI.Controllers
         /// <response code="201">İstifadəçi uğurla qeydiyyatdan keçdi.</response>
         /// <response code="400">Göndərilən məlumatlar keçərsiz idi (məs. email artıq mövcuddur).</response>
         [HttpPost("register")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register(RegisterDTO entity)
@@ -43,6 +43,7 @@ namespace WebAPI.Controllers
         /// <response code="200">Giriş uğurludur, JWT token qaytarıldı.</response>
         /// <response code="401">Email və ya şifrə yanlışdır.</response>
         [HttpPost("login")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login(LoginDTO entity)
