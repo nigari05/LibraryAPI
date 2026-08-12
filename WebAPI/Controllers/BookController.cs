@@ -98,6 +98,7 @@ namespace WebAPI.Controllers
         /// <param name="entity">Yeni kitab məlumatları.</param>
         /// <response code="204">Kitab uğurla yeniləndi.</response>
         /// <response code="404">Bu ID ilə kitab tapılmadı.</response>
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
