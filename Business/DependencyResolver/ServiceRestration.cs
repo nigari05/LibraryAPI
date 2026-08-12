@@ -4,6 +4,7 @@ using Business.Mapping;
 using Business.Validation.AuthorValidators;
 using Business.Validation.BookValidators;
 using Business.Validation.MemberValidators;
+using Core.Utilities.Caching;
 using DataAccess.Absract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Migrations;
@@ -21,6 +22,9 @@ namespace Business.DependencyResolver
     {
         public static void AddBusinessService(this IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddSingleton<ICacheService, MemoryCacheService>();
+
 
             services.AddScoped<AppDbContext>();
             services.AddScoped<IAuthorDAL, EfAuthorDAL>();
