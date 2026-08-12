@@ -48,12 +48,12 @@ namespace Business.Concrete
             var user = await _userDAL.GetByEmailAsync(entity.Email);
 
             if (user == null)
-                return new ErrorDataResult<string>(HttpStatusCode.NotFound, "User not found.");
+                return new ErrorDataResult<string>(HttpStatusCode.Unauthorized, "Email or password is incorrect.");
 
             bool check = BCrypt.Net.BCrypt.Verify(entity.Password, user.PasswordHash);
 
             if (!check)
-                return new ErrorDataResult<string>(HttpStatusCode.BadRequest, "Password is incorrect.");
+                return new ErrorDataResult<string>(HttpStatusCode.Unauthorized, "Email or password   is incorrect.");
 
             var token = _jwtService.GenerateToken(user);
 
