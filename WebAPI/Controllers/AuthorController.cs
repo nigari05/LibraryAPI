@@ -39,6 +39,7 @@ namespace WebAPI.Controllers
         /// <param name="id">Müəllifin unikal identifikatoru.</param>
         /// <response code="200">Müəllif tapıldı.</response>
         /// <response code="404">Bu ID ilə müəllif tapılmadı.</response>
+        [Authorize]
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(IDataResult<GetAuthorDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
