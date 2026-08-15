@@ -46,6 +46,10 @@ namespace Business.Concrete
                 throw new KeyNotFoundException("Book not found.");
 
             await _bookDAL.DeleteAsync(book);
+            // Kitab silinəndə ona aid üz qabığı şəkli də silinir ki, diskdə sahibsiz
+            // fayl qalmasın (qalan hallar gündəlik təmizləmə tapşırığı ilə tutulur).
+            if (!string.IsNullOrEmpty(book.CoverImagePath))
+                _fileStorageService.Delete(book.CoverImagePath);
             return new SuccessResult(HttpStatusCode.NoContent, "Book deleted successfully.");
         }
 
