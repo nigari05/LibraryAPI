@@ -2,6 +2,7 @@ using Business.DependencyResolver;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using WebAPI.BackgroundServices;
 using WebAPI.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBusinessService();
@@ -37,6 +38,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 
 builder.Services.AddAuthorization();
+
+// Planlaşdırılmış tapşırıq (@Scheduled) - gündəlik təmizləmə xidməti. Bax:
+// WebAPI/BackgroundServices/DailyCleanupService.cs
+builder.Services.AddHostedService<DailyCleanupService>();
 
 var app = builder.Build();
 
