@@ -105,5 +105,17 @@ namespace DataAccess.Concrete.EntityFramework
                 throw;
             }
         }
+
+        public async Task<List<BookLoan>> GetOverdueLoansAsync()
+        {
+            var now = DateTime.UtcNow;
+
+            return await _context.BookLoans
+                .Include(l => l.Book)
+                .Include(l => l.Member)
+                .Where(l => l.ReturnedAt == null && l.DueDate < now)
+                .AsNoTracking()
+                .ToListAsync();
+        }
     }
 }

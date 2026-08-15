@@ -23,5 +23,12 @@ namespace DataAccess.Absract
         /// daxilində.
         /// </summary>
         Task<BookLoan> ReturnBookAsync(Guid loanId);
+
+        /// <summary>
+        /// Müddəti keçmiş (DueDate keçib) və hələ qaytarılmamış (ReturnedAt == null)
+        /// bütün icarələri qaytarır. Planlaşdırılmış gündəlik təmizləmə tapşırığı
+        /// tərəfindən istifadə olunur.
+        /// </summary>
+        Task<List<BookLoan>> GetOverdueLoansAsync();
     }
 }
