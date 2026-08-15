@@ -157,7 +157,7 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Book updated successfully.");
         }
 
-        public async Task<IResult> UploadCoverImageAsync(Guid id, IFormFile file)
+        public async Task<IResult> UploadCoverImageAsync(Guid id, Microsoft.AspNetCore.Http.IFormFile file)
         {
             var book = await _bookDAL.GetByIdAsync(id);
 

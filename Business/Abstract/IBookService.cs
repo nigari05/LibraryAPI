@@ -36,7 +36,7 @@ namespace Business.Abstract
         /// Kitabın üz qabığı şəklini yükləyir (multipart/form-data). Fayl tipi
         /// (.jpg/.jpeg/.png/.webp) və ölçüsü (maks. 5 MB) validasiya edilir.
         /// </summary>
-        Task<IResult> UploadCoverImageAsync(Guid id, IFormFile file);
+        Task<IResult> UploadCoverImageAsync(Guid id, Microsoft.AspNetCore.Http.IFormFile file);
 
         /// <summary>
         /// Kitabın əvvəllər yüklənmiş üz qabığı şəklini (bytes) qaytarır.

@@ -5,6 +5,7 @@ using Business.Validation.AuthorValidators;
 using Business.Validation.BookValidators;
 using Business.Validation.MemberValidators;
 using Core.Utilities.Caching;
+using Core.Utilities.FileStorage;
 using DataAccess.Absract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Migrations;
@@ -44,6 +45,8 @@ namespace Business.DependencyResolver
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IBookLoanDAL, EfBookLoanDAL>();
             services.AddScoped<IBookLoanService, BookLoanManager>();
+            services.AddScoped<IFileStorageService, LocalFileStorageService>();
+
         }
     }
 }
