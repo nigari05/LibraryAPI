@@ -18,6 +18,8 @@ namespace Entities.DTOs.BookDTOs
 
         public string? AuthorName { get; set; }
         public List<string> CategoryNames { get; set; } = new();
+        public bool HasCoverImage { get; set; }
+
 
     }
 }
