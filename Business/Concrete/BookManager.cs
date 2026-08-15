@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Abstract;
+using Core.Utilities.FileStorage;
 using Core.Utilities.Pagination;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete.ErrorResults;
@@ -17,13 +18,17 @@ namespace Business.Concrete
 {
     public class BookManager : IBookService
     {
+        private const long MaxCoverImageSizeBytes = 5 * 1024 * 1024; // 5 MB
+        private const string CoverImagesSubFolder = "covers";
         private readonly IBookDAL _bookDAL;
         private readonly  IMapper _mapper;
+        private readonly IFileStorageService _fileStorageService;
 
-        public BookManager(IBookDAL bookDAL, IMapper mapper)
+        public BookManager(IBookDAL bookDAL, IMapper mapper, IFileStorageService fileStorageService)
         {
             _bookDAL = bookDAL;
             _mapper = mapper;
+            _fileStorageService = fileStorageService;
         }
 
         public async Task<IResult> AddAsync(CreateBookDTO entity)
@@ -42,6 +47,31 @@ namespace Business.Concrete
 
             await _bookDAL.DeleteAsync(book);
             return new SuccessResult(HttpStatusCode.NoContent, "Book deleted successfully.");
+        }
+
+        public async Task<IDataResult<BookCoverDTO>> DownloadCoverImageAsync(Guid id)
+        {
+            var book = await _bookDAL.GetByIdAsync(id);
+
+            if (book == null)
+                throw new KeyNotFoundException("Book not found.");
+
+            if (string.IsNullOrEmpty(book.CoverImagePath))
+                throw new KeyNotFoundException("Bu kitab üçün üz qabığı şəkli yüklənməyib.");
+
+            var content = await _fileStorageService.ReadAsync(book.CoverImagePath);
+
+            if (content == null)
+                throw new KeyNotFoundException("Şəkil fayl sistemində tapılmadı.");
+
+            var coverDTO = new BookCoverDTO
+            {
+                Content = content,
+                ContentType = FileContentTypeResolver.Resolve(book.CoverImagePath),
+                FileName = Path.GetFileName(book.CoverImagePath)
+            };
+
+            return new SuccessDataResult<BookCoverDTO>(HttpStatusCode.OK, coverDTO);
         }
 
         public async Task<IDataResult<PagedResult<GetBookDTO>>> FilterBooksAsync(BookFilterParameters filterParameters)
@@ -127,7 +157,41 @@ namespace Business.Concrete
             return new SuccessResult(HttpStatusCode.NoContent, "Book updated successfully.");
         }
 
-        
-       
+        public async Task<IResult> UploadCoverImageAsync(Guid id, IFormFile file)
+        {
+            var book = await _bookDAL.GetByIdAsync(id);
+
+            if (book == null)
+                throw new KeyNotFoundException("Book not found.");
+
+            if (file == null || file.Length == 0)
+                throw new ArgumentException("Fayl seçilməyib.");
+
+            if (file.Length > MaxCoverImageSizeBytes)
+                throw new ArgumentException($"Fayl ölçüsü {MaxCoverImageSizeBytes / (1024 * 1024)} MB-dan böyük ola bilməz.");
+
+            var extension = Path.GetExtension(file.FileName);
+
+            if (string.IsNullOrWhiteSpace(extension) || !FileContentTypeResolver.IsAllowedExtension(extension))
+                throw new ArgumentException("Yalnız .jpg, .jpeg, .png, .webp formatlı fayllar qəbul edilir.");
+
+            if (string.IsNullOrWhiteSpace(file.ContentType) || !file.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException("Göndərilən fayl şəkil formatında deyil.");
+
+            // Köhnə şəkil fərqli uzantı ilə yüklənmişdisə, disk üzərində sürünüb qalmasın.
+            if (!string.IsNullOrEmpty(book.CoverImagePath))
+                _fileStorageService.Delete(book.CoverImagePath);
+
+            var fileName = $"{book.Id}{extension}";
+
+            await using (var stream = file.OpenReadStream())
+            {
+                book.CoverImagePath = await _fileStorageService.SaveAsync(stream, fileName, CoverImagesSubFolder);
+            }
+
+            await _bookDAL.UpdateAsync(book);
+
+            return new SuccessResult(HttpStatusCode.OK, "Kitabın üz qabığı şəkli uğurla yükləndi.");
+        }
     }
 }
