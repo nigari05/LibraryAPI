@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using Business.Concrete;
 using Business.Mapping;
+using Core.Utilities.FileStorage;
 using Core.Utilities.Pagination;
 using DataAccess.Absract;
 using Entities.Concrete;
 using Entities.DTOs.BookDTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
+using System.Text;
 using Xunit;
 
 namespace Tests.Managers
@@ -16,15 +19,30 @@ namespace Tests.Managers
         private readonly Mock<IBookDAL> _bookDalMock;
         private readonly IMapper _mapper;
         private readonly BookManager _bookManager;
+        private readonly Mock<IFileStorageService> _fileStorageMock;
+
 
         public BookManagerTests()
         {
             _bookDalMock = new Mock<IBookDAL>();
+            _fileStorageMock = new Mock<IFileStorageService>();
+
 
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<BookProfile>(), NullLoggerFactory.Instance);
             _mapper = mapperConfig.CreateMapper();
 
-            _bookManager = new BookManager(_bookDalMock.Object, _mapper);
+            _bookManager = new BookManager(_bookDalMock.Object, _mapper, _fileStorageMock.Object);
+        }
+
+        private static IFormFile CreateFormFile(string fileName, string contentType, int sizeInBytes = 100)
+        {
+            var content = new byte[sizeInBytes];
+            var stream = new MemoryStream(content);
+            return new FormFile(stream, 0, stream.Length, "file", fileName)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = contentType
+            };
         }
 
         [Fact]
@@ -257,6 +275,99 @@ namespace Tests.Managers
 
             _bookDalMock.Verify(x => x.UpdateAsync(It.IsAny<Book>()), Times.Never);
         }
+
+        [Fact]
+        public async Task UploadCoverImageAsync_Should_Save_File_And_Update_Book()
+        {
+            var id = Guid.NewGuid();
+            var book = new Book { Id = id, Title = "Clean Code" };
+            var file = CreateFormFile("cover.jpg", "image/jpeg");
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(book);
+            _fileStorageMock
+                .Setup(x => x.SaveAsync(It.IsAny<Stream>(), $"{id}.jpg", "covers"))
+                .ReturnsAsync($"covers/{id}.jpg");
+
+            var result = await _bookManager.UploadCoverImageAsync(id, file);
+
+            Assert.True(result.Success);
+            Assert.Equal($"covers/{id}.jpg", book.CoverImagePath);
+            _fileStorageMock.Verify(x => x.SaveAsync(It.IsAny<Stream>(), $"{id}.jpg", "covers"), Times.Once);
+            _bookDalMock.Verify(x => x.UpdateAsync(book), Times.Once);
+        }
+
+        [Fact]
+        public async Task UploadCoverImageAsync_Should_Throw_When_Book_Not_Found()
+        {
+            var id = Guid.NewGuid();
+            var file = CreateFormFile("cover.jpg", "image/jpeg");
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync((Book?)null);
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _bookManager.UploadCoverImageAsync(id, file));
+        }
+
+        [Fact]
+        public async Task UploadCoverImageAsync_Should_Throw_When_Extension_Not_Allowed()
+        {
+            var id = Guid.NewGuid();
+            var book = new Book { Id = id, Title = "Clean Code" };
+            var file = CreateFormFile("cover.gif", "image/gif");
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(book);
+
+            await Assert.ThrowsAsync<ArgumentException>(
+                () => _bookManager.UploadCoverImageAsync(id, file));
+
+            _fileStorageMock.Verify(x => x.SaveAsync(It.IsAny<Stream>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        }
+        [Fact]
+        public async Task UploadCoverImageAsync_Should_Throw_When_File_Too_Large()
+        {
+            var id = Guid.NewGuid();
+            var book = new Book { Id = id, Title = "Clean Code" };
+            var file = CreateFormFile("cover.jpg", "image/jpeg", sizeInBytes: 6 * 1024 * 1024);
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(book);
+
+            await Assert.ThrowsAsync<ArgumentException>(
+                () => _bookManager.UploadCoverImageAsync(id, file));
+
+            _fileStorageMock.Verify(x => x.SaveAsync(It.IsAny<Stream>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        }
+
+
+        [Fact]
+        public async Task DownloadCoverImageAsync_Should_Return_File_Content()
+        {
+            var id = Guid.NewGuid();
+            var book = new Book { Id = id, Title = "Clean Code", CoverImagePath = "covers/" + id + ".png" };
+            var bytes = Encoding.UTF8.GetBytes("fake-image-bytes");
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(book);
+            _fileStorageMock.Setup(x => x.ReadAsync(book.CoverImagePath)).ReturnsAsync(bytes);
+
+            var result = await _bookManager.DownloadCoverImageAsync(id);
+
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            Assert.Equal(bytes, result.Data!.Content);
+            Assert.Equal("image/png", result.Data.ContentType);
+        }
+
+        [Fact]
+        public async Task DownloadCoverImageAsync_Should_Throw_When_Book_Has_No_Cover()
+        {
+            var id = Guid.NewGuid();
+            var book = new Book { Id = id, Title = "Clean Code", CoverImagePath = null };
+
+            _bookDalMock.Setup(x => x.GetByIdAsync(id)).ReturnsAsync(book);
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _bookManager.DownloadCoverImageAsync(id));
+        }
+
 
     }
 }
