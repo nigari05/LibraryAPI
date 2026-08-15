@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.FileStorage;
 using DataAccess.Absract;
+using Entities.DTOs.CleanupDTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,7 +36,7 @@ namespace Business.Concrete
             {
                 OrphanedCoverImagesRemoved = orphanedRemoved,
                 OverdueLoansFound = overdueLoans.Count
-            };
+            }; 
         }
 
         /// <summary>
