@@ -43,6 +43,10 @@ builder.Services.AddAuthorization();
 // WebAPI/BackgroundServices/DailyCleanupService.cs
 builder.Services.AddHostedService<DailyCleanupService>();
 
+// Asinxron emal (@Async) - növbədəki email tapşırıqlarını icra edən worker. Bax:
+// WebAPI/BackgroundServices/QueuedBackgroundEmailService.cs
+builder.Services.AddHostedService<QueuedBackgroundEmailService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
