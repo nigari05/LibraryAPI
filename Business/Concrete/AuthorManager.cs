@@ -23,9 +23,10 @@ namespace Business.Concrete
         private readonly IAuthorDAL _authorDAL;
         private readonly IMapper _mapper;
 
-        public AuthorManager(IAuthorDAL authorDAL)
+        public AuthorManager(IAuthorDAL authorDAL, IMapper mapper)
         {
             _authorDAL = authorDAL;
+            _mapper = mapper;
         }
 
         public async Task<IResult> AddAsync(CreateAuthorDTO entity)
