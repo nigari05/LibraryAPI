@@ -4,6 +4,7 @@ using Business.Mapping;
 using Business.Validation.AuthorValidators;
 using Business.Validation.BookValidators;
 using Business.Validation.MemberValidators;
+using Core.Utilities.BackgroundTasks;
 using Core.Utilities.Caching;
 using Core.Utilities.FileStorage;
 using DataAccess.Absract;
@@ -46,7 +47,12 @@ namespace Business.DependencyResolver
             services.AddScoped<IBookLoanDAL, EfBookLoanDAL>();
             services.AddScoped<IBookLoanService, BookLoanManager>();
             services.AddScoped<IFileStorageService, LocalFileStorageService>();
+            services.AddScoped<ICleanupService, CleanupManager>();
 
+            // Checkpoint 4 - Asinxron emal (@Async). Növbə Singleton olmalıdır ki, bütün
+            // scoped request-lər (BookLoanManager və s.) eyni növbəni paylaşsın.
+            services.AddSingleton<IBackgroundTaskQueue>(_ => new BackgroundTaskQueue(capacity: 100));
+            services.AddScoped<IEmailNotificationService, EmailNotificationManager>();
         }
     }
 }
