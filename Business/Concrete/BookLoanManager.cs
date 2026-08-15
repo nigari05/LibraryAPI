@@ -13,10 +13,13 @@ namespace Business.Concrete
     public class BookLoanManager : IBookLoanService
     {
         private readonly IBookLoanDAL _bookLoanDAL;
+        private readonly IEmailNotificationService _emailNotificationService;
 
-        public BookLoanManager(IBookLoanDAL bookLoanDAL)
+
+        public BookLoanManager(IBookLoanDAL bookLoanDAL, IEmailNotificationService emailNotificationService)
         {
             _bookLoanDAL = bookLoanDAL;
+            _emailNotificationService = emailNotificationService;
         }
 
         public async Task<IDataResult<GetBookLoanDTO>> BorrowBookAsync(BorrowBookDTO dto)
@@ -35,7 +38,16 @@ namespace Business.Concrete
             }
 
             var result = await _bookLoanDAL.GetByIdAsync(createdLoan.Id);
-
+            // Checkpoint 4 - Asinxron emal (@Async): email bildirişi növbəyə atılır və
+            // BLOKLAMADAN davam edilir - HTTP cavabı email göndərilməsini gözləmir.
+            if (result?.Member != null && !string.IsNullOrWhiteSpace(result.Member.Email))
+            {
+                await _emailNotificationService.QueueBorrowConfirmationAsync(
+                    result.Member.Email,
+                    $"{result.Member.FirstName} {result.Member.LastName}",
+                    result.Book?.Title ?? string.Empty,
+                    result.DueDate);
+            }
             var dtoResult = MapToDto(result!);
             return new SuccessDataResult<GetBookLoanDTO>(HttpStatusCode.Created, "Kitab uğurla icarəyə verildi.", dtoResult);
         }
@@ -45,7 +57,14 @@ namespace Business.Concrete
             await _bookLoanDAL.ReturnBookAsync(loanId);
 
             var result = await _bookLoanDAL.GetByIdAsync(loanId);
-
+            // Checkpoint 4 - Asinxron emal (@Async): eyni qeyri-bloklayan yanaşma.
+            if (result?.Member != null && !string.IsNullOrWhiteSpace(result.Member.Email))
+            {
+                await _emailNotificationService.QueueReturnConfirmationAsync(
+                    result.Member.Email,
+                    $"{result.Member.FirstName} {result.Member.LastName}",
+                    result.Book?.Title ?? string.Empty);
+            }
             var dtoResult = MapToDto(result!);
             return new SuccessDataResult<GetBookLoanDTO>(HttpStatusCode.OK, "Kitab uğurla qaytarıldı.", dtoResult);
         }
