@@ -36,5 +36,12 @@ namespace DataAccess.Absract
         /// </summary>
         Task<Book?> GetByIdWithDetailsAsync(Guid id);
 
+        /// <summary>
+        /// Sahibsiz (orphaned) üz qabığı fayllarını aşkar etmək üçün, verilənlər
+        /// bazasında hazırda istinad olunan bütün CoverImagePath dəyərlərini qaytarır.
+        /// </summary>
+        Task<List<string>> GetAllCoverImagePathsAsync();
+
+
     }
 }

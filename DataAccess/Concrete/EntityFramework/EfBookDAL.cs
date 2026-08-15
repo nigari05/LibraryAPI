@@ -90,6 +90,15 @@ namespace DataAccess.Concrete.EntityFramework
             return (books, totalCount);
         }
 
+        public async Task<List<string>> GetAllCoverImagePathsAsync()
+        {
+            return await _context.Books
+               .Where(b => b.CoverImagePath != null)
+               .Select(b => b.CoverImagePath!)
+               .AsNoTracking()
+               .ToListAsync();
+        }
+
         /// <summary>
         /// Bax: IBookDAL.GetByIdWithDetailsAsync. Author və Categories eyni sorğuda
         /// (Include) yüklənir - beləliklə DTO qurularkən əlavə sorğuya ehtiyac qalmır.
