@@ -143,5 +143,50 @@ namespace WebAPI.Controllers
             var result = await _bookService.FilterBooksAsync(filter);
             return StatusCode((int)result.StatusCode, result);
         }
+
+        /// <summary>
+        /// Kitabın üz qabığı şəklini yükləyir (multipart/form-data). Yalnız Admin rolu
+        /// icazəlidir. Fayl tipi (.jpg/.jpeg/.png/.webp) və ölçüsü (maks. 5 MB) validasiya edilir.
+        /// </summary>
+        /// <param name="id">Kitabın identifikatoru.</param>
+        /// <param name="file">Yüklənəcək şəkil faylı.</param>
+        /// <response code="200">Şəkil uğurla yükləndi.</response>
+        /// <response code="400">Fayl seçilməyib, ölçüsü limitdən böyükdür və ya formatı dəstəklənmir.</response>
+        /// <response code="401">İstifadəçi autentifikasiya olunmayıb.</response>
+        /// <response code="403">İstifadəçinin Admin rolu yoxdur.</response>
+        /// <response code="404">Bu ID ilə kitab tapılmadı.</response>
+        [HttpPost("{id}/cover")]
+        [Authorize(Roles = "Admin")]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(typeof(Core.Utilities.Results.Abstract.IResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UploadCoverImage(Guid id, IFormFile file)
+        {
+            var result = await _bookService.UploadCoverImageAsync(id, file);
+            return StatusCode((int)result.StatusCode, result);
+        }
+
+
+        /// <summary>
+        /// Kitabın əvvəllər yüklənmiş üz qabığı şəklini fayl olaraq endirir.
+        /// </summary>
+        /// <param name="id">Kitabın identifikatoru.</param>
+        /// <response code="200">Şəkil faylı qaytarıldı.</response>
+        /// <response code="404">Bu ID ilə kitab, ya da ona aid şəkil tapılmadı.</response>
+        [HttpGet("{id}/cover")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DownloadCoverImage(Guid id)
+        {
+            var result = await _bookService.DownloadCoverImageAsync(id);
+
+            if (!result.Success || result.Data == null)
+                return StatusCode((int)result.StatusCode, result);
+
+            return File(result.Data.Content, result.Data.ContentType, result.Data.FileName);
+        }
     }
 }
