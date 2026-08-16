@@ -83,5 +83,91 @@ namespace Tests.Managers
             // AddAsync keşi invalidasiya etdiyi üçün DAL YENİDƏN çağırılmalıdır (cəmi 2 dəfə).
             _categoryDalMock.Verify(x => x.GetAllAsync(pagination), Times.Exactly(2));
         }
+
+        [Fact]
+        public async Task UpdateAsync_Should_Invalidate_Cache_So_Next_Read_Reflects_The_Update()
+        {
+            var pagination = new PaginationParameters { PageNumber = 1, PageSize = 10 };
+            var categoryId = Guid.NewGuid();
+            var existingCategory = new Category { Id = categoryId, Name = "Fiction" };
+
+            _categoryDalMock
+                .SetupSequence(x => x.GetAllAsync(pagination))
+                .ReturnsAsync(new List<Category> { new Category { Id = categoryId, Name = "Fiction" } })
+                .ReturnsAsync(new List<Category> { new Category { Id = categoryId, Name = "Fiction & Fantasy" } });
+
+            _categoryDalMock
+                .Setup(x => x.GetByIdAsync(categoryId))
+                .ReturnsAsync(existingCategory);
+
+            var beforeUpdate = await _categoryManager.GetAllCategoriesAsync(pagination);
+            Assert.Equal("Fiction", beforeUpdate.Data!.Single().Name);
+
+            await _categoryManager.UpdateAsync(categoryId, new UpdateCategoryDTO { Name = "Fiction & Fantasy" });
+
+            var afterUpdate = await _categoryManager.GetAllCategoriesAsync(pagination);
+
+            // Köhnəlmiş (stale) keşlənmiş dəyər deyil, YENİLƏNMİŞ məlumat qayıtmalıdır.
+            Assert.Equal("Fiction & Fantasy", afterUpdate.Data!.Single().Name);
+            _categoryDalMock.Verify(x => x.GetAllAsync(pagination), Times.Exactly(2));
+        }
+
+        [Fact]
+        public async Task DeleteAsync_Should_Invalidate_Cache_So_Next_Read_Excludes_Deleted_Item()
+        {
+            var pagination = new PaginationParameters { PageNumber = 1, PageSize = 10 };
+            var categoryId = Guid.NewGuid();
+            var category = new Category { Id = categoryId, Name = "Deprecated" };
+
+            _categoryDalMock
+                .SetupSequence(x => x.GetAllAsync(pagination))
+                .ReturnsAsync(new List<Category> { category })
+                .ReturnsAsync(new List<Category>());
+
+            _categoryDalMock
+                .Setup(x => x.GetByIdAsync(categoryId))
+                .ReturnsAsync(category);
+
+            var beforeDelete = await _categoryManager.GetAllCategoriesAsync(pagination);
+            Assert.Single(beforeDelete.Data!);
+
+            await _categoryManager.DeleteAsync(categoryId);
+
+            var afterDelete = await _categoryManager.GetAllCategoriesAsync(pagination);
+
+            // Silinmiş element köhnəlmiş keşdən deyil, YENİDƏN DAL-dan gətirilməli məlumatda olmamalıdır.
+            Assert.Empty(afterDelete.Data!);
+            _categoryDalMock.Verify(x => x.GetAllAsync(pagination), Times.Exactly(2));
+        }
+
+        [Fact]
+        public async Task Invalidation_Should_Only_Clear_Entries_Matching_The_Category_Prefix()
+        {
+            // Digər (kateqoriyaya aid olmayan) keş açarları yazı əməliyyatından TƏSİRLƏNMƏMƏLİDİR -
+            // RemoveByPrefix yalnız "categories:all:*" ilə uyğun gələn açarları silməlidir.
+            var unrelatedCallCount = 0;
+            var unrelatedValue = await _cacheService.GetOrCreateAsync("books:all:1:10", async () =>
+            {
+                unrelatedCallCount++;
+                return await Task.FromResult("cached-books-payload");
+            });
+
+            var pagination = new PaginationParameters { PageNumber = 1, PageSize = 10 };
+            _categoryDalMock
+                .Setup(x => x.GetAllAsync(pagination))
+                .ReturnsAsync(new List<Category>());
+
+            await _categoryManager.GetAllCategoriesAsync(pagination);
+            await _categoryManager.AddAsync(new CreateCategoryDTO { Name = "New" });
+
+            // Aidiyyatsız açar hələ də keşdə qalmalı, factory YENİDƏN çağırılmamalıdır.
+            await _cacheService.GetOrCreateAsync("books:all:1:10", async () =>
+            {
+                unrelatedCallCount++;
+                return await Task.FromResult("cached-books-payload");
+            });
+
+            Assert.Equal(1, unrelatedCallCount);
+        }
     }
 }
