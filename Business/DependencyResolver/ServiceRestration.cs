@@ -13,22 +13,25 @@ using DataAccess.Migrations;
 using Entities.Concrete;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Business.DependencyResolver
 {
     public static class ServiceRestration
     {
-        public static void AddBusinessService(this IServiceCollection services)
+        public static void AddBusinessService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheService, MemoryCacheService>();
 
-
-            services.AddScoped<AppDbContext>();
+            services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IAuthorDAL, EfAuthorDAL>();
             services.AddScoped<IAuthorService, AuthorManager>();
             services.AddScoped<IMemberDAL, EfMemberDAL>();

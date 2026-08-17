@@ -1,6 +1,7 @@
 ﻿using Entities.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -23,7 +24,45 @@ namespace DataAccess.Concrete.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=LibraryDb;Trusted_Connection=true; trustServerCertificate=true;");
+            // DI vasitəsilə (WebAPI-də AddDbContext ilə) və ya testlərdə (SQLite in-memory
+            // üçün UseSqlite) artıq konfiqurasiya edilibsə, bu default SQL Server tənzimləməsi
+            // TAMAMİLƏ ötürülür.
+            if (optionsBuilder.IsConfigured)
+                return;
+
+            var configuration = BuildConfiguration();
+
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException(
+                    "ConnectionStrings:DefaultConnection appsettings.json (və ya appsettings.{Environment}.json) " +
+                    "faylında tapılmadı. Zəhmət olmasa konfiqurasiyanı yoxlayın. Qeyd: 'dotnet ef' əmrini " +
+                    "birbaşa DataAccess layihəsindən işlədirsinizsə, --startup-project WebAPI parametrini " +
+                    "əlavə edin ki, WebAPI-nin appsettings.json faylı istifadə olunsun.");
+            }
+
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        /// <summary>
+        /// Parametrsiz konstruktorda (yuxarıda) DI-dan IConfiguration ala bilmədiyimiz üçün,
+        /// konfiqurasiyanı burada özümüz quraşdırırıq. Prioritet ardıcıllığı ASP.NET Core-un
+        /// öz WebApplicationBuilder-i ilə eynidir - beləliklə dev/prod arasında keçid appsettings
+        /// faylını dəyişməklə və ya ASPNETCORE_ENVIRONMENT dəyişənini təyin etməklə mümkün olur,
+        /// KODDA HEÇ BİR DƏYİŞİKLİK tələb olunmadan.
+        /// </summary>
+        private static IConfiguration BuildConfiguration()
+        {
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
+
+            return new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+                .AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: false)
+                .AddEnvironmentVariables()
+                .Build();
         }
 
         public DbSet<Author> Authors { get; set; }

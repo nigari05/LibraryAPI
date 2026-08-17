@@ -5,7 +5,7 @@ using System.Text;
 using WebAPI.BackgroundServices;
 using WebAPI.Middleware;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddBusinessService();
+builder.Services.AddBusinessService(builder.Configuration);
 
 // Add services to the container.
     
