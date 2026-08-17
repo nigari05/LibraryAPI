@@ -14,6 +14,36 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen(options =>
 {
+
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
+    {
+        Title = "LibraryAPI",
+        Version = "v1",
+        Description =
+           "Kitabxana idarəetmə sistemi üçün REST API (Onion Architecture). " +
+           "JWT əsaslı autentifikasiya, kitab/müəllif/kateqoriya/üzv idarəetməsi, " +
+           "kitab icarəsi (borrow/return), üz qabığı şəklinin yüklənməsi/endirilməsi, " +
+           "gündəlik təmizləmə (planlaşdırılmış tapşırıq) və icarə zamanı asinxron " +
+           "email bildirişi simulyasiyasını əhatə edir."
+    });
+
+
+    // JWT Bearer autentifikasiyası - Swagger UI-da "Authorize" düyməsi vasitəsilə
+    // qorunan (Authorize atributlu) endpoint-ləri birbaşa test etmək mümkün olsun deyə.
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.ParameterLocation.Header,
+        Description = "JWT tokeni daxil edin (yalnız tokenin özü, 'Bearer' prefiksi olmadan)."
+    });
+
+    options.AddSecurityRequirement(document => new Microsoft.OpenApi.OpenApiSecurityRequirement
+    {
+        [new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
+    });
     var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
